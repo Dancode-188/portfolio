@@ -66,6 +66,20 @@ header {
   gap: 20px;
 }
 
+.works-header {
+  display: flex;
+  justify-content: center;
+  font-family: 'Crete Round', sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  font-style: normal;
+  color: #1c1a19;
+}
+
+.line1 {
+  border: 1px solid #565353;
+}
+
 .projects-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -80,6 +94,108 @@ header {
 }
 
 .Img-placeholder {
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 325px;
+  max-height: 325px;
+  margin: 10px auto;
+}
+
+.multi-post-h3 {
+  margin-left: 20px;
+}
+
+.multi-post-h3 h3 {
+  font-family: 'Crete Round', sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.multi-post-p {
+  margin-left: 20px;
+}
+
+.multi-post-p p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.box-container1 {
+  display: flex;
+  gap: 15%;
+  margin-left: 20px;
+}
+
+.box {
+  display: flex;
+  border: 1px solid #ccc;
+  max-width: 70px;
+  justify-content: center;
+  padding: auto;
+}
+
+.see-project-btn1 {
+  margin-left: 20px;
+  margin-top: 10px;
+  max-width: 150px;
+  max-height: 35px;
+  border: none;
+  background-color: #ff6b00;
+  color: #fff;
+}
+
+.see-project-btn1:hover {
+  background-color: #006aff;
+}
+
+.professional {
+  background: url(images/Img-placeholder1.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.professional-h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 44px;
+  color: #fff;
+  margin-right: 10%;
+  margin-left: 5%;
+  margin-top: 16%;
+}
+
+.professional-p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  color: #fff;
+  margin-right: 10%;
+  margin-left: 5%;
+}
+
+.box-container2 {
+  display: flex;
+  gap: 20%;
+  margin-left: 5%;
+}
+
+.box-container2 .box {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.see-project-prof {
+  background-color: #ff6b00;
+  color: #fff;
+  border: none;
+  margin-top: 4%;
+}
+
+.see-project-prof:hover {
+  background-color: #006aff;
 }
