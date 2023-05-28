@@ -199,3 +199,99 @@ header {
 .see-project-prof:hover {
   background-color: #006aff;
 }
+
+.about {
+  background-color: rgb(35, 33, 33);
+  background-image: url(images/Group1.svg);
+  background-repeat: no-repeat;
+  background-position: bottom 62% right;
+}
+
+.about-h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  color: #ff6b00;
+  display: flex;
+  justify-content: center;
+}
+
+.about-p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  color: #fff;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.get-resume {
+  background-color: #ff6b00;
+  color: #fff;
+  border: none;
+  margin-left: 10%;
+}
+
+.about-line {
+  margin-top: 50%;
+}
+
+.line2 {
+  border: 1px solid white;
+}
+
+.interests {
+  color: #fff;
+}
+
+.interests ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-family: 'Inter', sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.areas {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.interests ul.languages > li::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: #ff6b00;
+  transform: rotate(45deg);
+  margin-right: 10px;
+}
+
+.interests ul.frameworks > li::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: #ff6b00;
+  margin-right: 10px;
+}
+
+.interests ul.skills > li::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: #ff6b00;
+  border-radius: 50%;
+  margin-right: 10px;
+}
