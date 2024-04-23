@@ -1,0 +1,152 @@
+@import '../styles/mixins';
+
+.servicePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #000;
+  color: $text-color;
+
+  .header {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    .title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+
+      @include glitch;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+
+      @include glitch;
+    }
+  }
+
+  .serviceSelector {
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba($text-color, 0.1);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba($text-color, 0.3);
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: $primary-color;
+
+      @include glitch;
+    }
+
+    form {
+      .formGroup {
+        margin-bottom: 1.5rem;
+
+        label {
+          font-size: 1.2rem;
+          margin-bottom: 0.5rem;
+          display: block;
+        }
+
+        select,
+        input {
+          width: 100%;
+          padding: 0.5rem;
+          font-size: 1rem;
+          border-radius: 4px;
+          border: none;
+          background-color: rgba($text-color, 0.2);
+          color: $text-color;
+        }
+      }
+
+      .generateButton {
+        background-color: $secondary-color;
+        color: #000;
+        border: none;
+        border-radius: 4px;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+          background-color: darken($secondary-color, 10%);
+        }
+
+        .buttonIcon {
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .servicePackageContainer {
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba($text-color, 0.1);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba($text-color, 0.3);
+    margin-bottom: 2rem;
+
+    .servicePackage {
+      h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: $primary-color;
+
+        @include glitch;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .packageDetails {
+        p {
+          font-size: 1.2rem;
+          margin-bottom: 0.5rem;
+        }
+
+        ul {
+          list-style-type: disc;
+          margin-left: 1.5rem;
+
+          li {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  .visualizationContainer {
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba($text-color, 0.1);
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba($text-color, 0.3);
+
+    .visualization {
+      h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: $primary-color;
+
+        @include glitch;
+      }
+    }
+  }
+}

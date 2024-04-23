@@ -1,0 +1,76 @@
+// Variables
+$primary-color: #00FF7F;
+$secondary-color: #4B0082;
+$text-color: #ADD8E6;
+$glitch-color: #FF00FF;
+$glitch-offset: 3px;
+$glitch-duration: 0.5s;
+
+// Mixins
+@mixin glitch($color: $text-color) {
+  position: relative;
+  animation: glitch $glitch-duration infinite;
+
+  &::before,
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  &::before {
+    left: $glitch-offset;
+    text-shadow: -$glitch-offset 0 $glitch-color;
+    animation: glitch-left $glitch-duration infinite;
+  }
+
+  &::after {
+    left: -$glitch-offset;
+    text-shadow: $glitch-offset 0 $glitch-color;
+    animation: glitch-right $glitch-duration infinite;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    clip: rect(42px, 9999px, 44px, 0);
+  }
+  5% {
+    clip: rect(12px, 9999px, 59px, 0);
+  }
+  10% {
+    clip: rect(59px, 9999px, 37px, 0);
+  }
+  // ... more keyframes
+}
+
+@keyframes glitch-left {
+  0% {
+    clip: rect(77px, 9999px, 41px, 0);
+  }
+  5% {
+    clip: rect(93px, 9999px, 78px, 0);
+  }
+  10% {
+    clip: rect(48px, 9999px, 88px, 0);
+  }
+  // ... more keyframes
+}
+
+@keyframes glitch-right {
+  0% {
+    clip: rect(49px, 9999px, 59px, 0);
+  }
+  5% {
+    clip: rect(33px, 9999px, 92px, 0);
+  }
+  10% {
+    clip: rect(65px, 9999px, 35px, 0);
+  }
+  // ... more keyframes
+}

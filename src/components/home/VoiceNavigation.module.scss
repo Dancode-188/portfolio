@@ -1,0 +1,62 @@
+@import '../styles/mixins';
+
+.voiceNavigation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #000;
+  color: $text-color;
+
+  .microphoneButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary-color;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    .microphoneIcon {
+      font-size: 2rem;
+    }
+
+    .microphoneText {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      white-space: nowrap;
+
+      @include glitch;
+    }
+  }
+
+  .transcriptContainer {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: rgba($text-color, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba($text-color, 0.3);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+
+    .transcript {
+      font-size: 1.2rem;
+      color: $text-color;
+      @include glitch;
+    }
+  }
+}
