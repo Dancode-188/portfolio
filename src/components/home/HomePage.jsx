@@ -1,18 +1,15 @@
 import React from 'react';
-import Header from '../common/Header';
 import CodeShowcase from './CodeShowcase';
 import SkillsAssessment from './SkillsAssessment';
 import ARProjectShowcase from './ARProjectShowcase';
 import LiveCoding from './LiveCoding';
 import VoiceNavigation from './VoiceNavigation';
 import PersonalizedContent from './PersonalizedContent';
-import Footer from '../common/Footer';
 import styles from './HomePage.module.scss';
 
 const HomePage = () => {
   return (
     <div className={styles.homePage}>
-      <Header />
 
       <section className={styles.section}>
         <h2 className={styles.sectionTitle} data-text="Code Showcase">
@@ -106,7 +103,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 };

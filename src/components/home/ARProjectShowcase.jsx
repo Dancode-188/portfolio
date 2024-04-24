@@ -1,22 +1,13 @@
 // src/components/home/ARProjectShowcase.jsx
-
-import React, { useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { ARButton, Interactive, useHitTest } from '@react-three/xr';
+import React from 'react';
+import { Canvas } from '@react-three/fiber';
+import { XR, Interactive, useHitTest } from '@react-three/xr';
+import { ARButton } from '@react-three/xr';
 import styles from './ARProjectShowcase.module.scss';
 
 const ARCube = () => {
-  const cubeRef = useRef();
-
-  useFrame(() => {
-    if (cubeRef.current) {
-      cubeRef.current.rotation.x += 0.01;
-      cubeRef.current.rotation.y += 0.01;
-    }
-  });
-
   return (
-    <mesh ref={cubeRef}>
+    <mesh>
       <boxGeometry args={[0.5, 0.5, 0.5]} />
       <meshBasicMaterial color={0x00FF7F} />
     </mesh>
@@ -24,8 +15,6 @@ const ARCube = () => {
 };
 
 const ARProjectShowcase = () => {
-  const hitTestRef = useHitTest();
-
   return (
     <div className={styles.arProjectShowcase}>
       <div className={styles.content}>
@@ -42,22 +31,30 @@ const ARProjectShowcase = () => {
       </div>
       <div className={styles.arContainer}>
         <Canvas>
-          <ARButton />
-          <ambientLight />
-          <pointLight position={[10, 10, 10]} />
-          <Interactive onSelect={() => console.log('Cube selected')}>
-            <ARCube />
-          </Interactive>
-          {hitTestRef && (
-            <mesh position={hitTestRef.point} rotation={[-Math.PI / 2, 0, 0]}>
-              <planeGeometry args={[1, 1]} />
-              <meshBasicMaterial color={0xff0000} transparent opacity={0.5} />
-            </mesh>
-          )}
+          <XR>
+            <ambientLight />
+            <pointLight position={[10, 10, 10]} />
+            <Interactive onSelect={() => console.log('Cube selected')}>
+              <ARCube />
+            </Interactive>
+            <HitTestComponent />
+          </XR>
         </Canvas>
+        <ARButton /> {/* Use the ARButton component directly */}
       </div>
     </div>
   );
+};
+
+const HitTestComponent = () => {
+  const hitTestRef = useHitTest();
+
+  return hitTestRef ? (
+    <mesh position={hitTestRef.point} rotation={[-Math.PI / 2, 0, 0]}>
+      <planeGeometry args={[1, 1]} />
+      <meshBasicMaterial color={0xff0000} transparent opacity={0.5} />
+    </mesh>
+  ) : null;
 };
 
 export default ARProjectShowcase;

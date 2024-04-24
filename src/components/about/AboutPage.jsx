@@ -1,5 +1,4 @@
 // src/components/about/AboutPage.jsx
-
 import React, { useState } from 'react';
 import styles from './AboutPage.module.scss';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';

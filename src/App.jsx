@@ -1,10 +1,11 @@
 // src/App.jsx
 
+// src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from  './components/common/Header';
+import Header from './components/common/Header';
 import Footer from './components/common/Footer';
-import Navigation from  './components/common/Navigation';
+//import Navigation from './components/common/Navigation';
 import HomePage from './components/home/HomePage';
 import AboutPage from './components/about/AboutPage';
 import ServicePage from './components/services/ServicePage';
@@ -19,16 +20,15 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <Navigation />
         <Routes>
-          <Route exact path="/home" component={HomePage} />
-          <Route path="/about" component={AboutPage} />
-          <Route path="/services" component={ServicePage} />
-          <Route path="/blog" component={BlogPage} />
-          <Route path="/portfolio" component={PortfolioPage} />
-          <Route path="/contact" component={ContactPage} />
-          <Route path="/testimonials" component={TestimonialsPage} />
-          <Route path="/community" component={CommunityPage} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/services" element={<ServicePage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/testimonials" element={<TestimonialsPage />} />
+          <Route path="/community" element={<CommunityPage />} />
         </Routes>
         <Footer />
       </div>

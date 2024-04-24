@@ -1,8 +1,8 @@
 // src/components/portfolio/PortfolioPage.jsx
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo } from 'react';
 import styles from './PortfolioPage.module.scss';
 import { Canvas } from '@react-three/fiber';
-import { Text, OrbitControls, Sphere, useTexture } from '@react-three/drei';
+import { Text, OrbitControls, Sphere } from '@react-three/drei';
 
 const PortfolioPage = () => {
   const hotspotPositions = useMemo(
@@ -20,13 +20,10 @@ const PortfolioPage = () => {
   };
 
   const Hotspot = ({ position, text, url }) => {
-    const mesh = useRef();
-    const texture = useTexture('/path/to/hotspot-texture.png');
-
     return (
-      <mesh ref={mesh} position={position} onClick={() => handleHotspotClick(url)}>
+      <mesh position={position} onClick={() => handleHotspotClick(url)}>
         <sphereGeometry args={[0.5, 32, 32]} />
-        <meshBasicMaterial map={texture} />
+        <meshBasicMaterial color={0xff0000} />
         <Text position={[0, 1, 0]} fontSize={0.5} color="white" anchorX="center" anchorY="bottom">
           {text}
         </Text>
