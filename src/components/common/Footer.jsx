@@ -13,8 +13,8 @@ const Footer = () => {
       <div className={styles.footerContent}>
         <div className={styles.footerLinks}>
           <h3>
-            <span className={styles.glitch} data-text="CYBER.DEV">
-              CYBER.DEV
+            <span className={styles.glitch} data-text="DANIEL BITENGO">
+            DANIEL BITENGO
             </span>
           </h3>
           <nav>
@@ -79,7 +79,7 @@ const Footer = () => {
       <div className={styles.footerCopyright}>
         <p>
           <span className={styles.glitch} data-text={`© ${currentYear} CYBER.DEV. All rights reserved.`}>
-            &copy; {currentYear} CYBER.DEV. All rights reserved.
+            &copy; {currentYear} DANIEL BITENGO. All rights reserved.
           </span>
         </p>
       </div>

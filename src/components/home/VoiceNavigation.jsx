@@ -28,7 +28,9 @@ const VoiceNavigation = () => {
     };
 
     recognition.onend = () => {
-      recognition.start();
+      if (isListening) {
+        recognition.start();
+      }
     };
 
     if (isListening) {
@@ -52,6 +54,10 @@ const VoiceNavigation = () => {
         navigate('/projects');
       } else if (lowercaseTranscript.includes('contact') || lowercaseTranscript.includes('go to contact')) {
         navigate('/contact');
+      } else if (lowercaseTranscript.includes('portfolio') || lowercaseTranscript.includes('go to portfolio')) {
+        navigate('/portfolio');
+      } else if (lowercaseTranscript.includes('services') || lowercaseTranscript.includes('go to services')) {
+        navigate('/services');
       }
     };
 

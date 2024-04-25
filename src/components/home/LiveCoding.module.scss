@@ -76,16 +76,37 @@
 
     .registerButton {
       display: inline-block;
-      padding: 0.75rem 1.5rem;
+      padding: 1rem 2rem;
       font-size: 1.2rem;
       background-color: $primary-color;
       color: #000;
       text-decoration: none;
       border-radius: 4px;
       transition: background-color 0.3s;
+      position: relative;
+      overflow: hidden;
 
       &:hover {
         background-color: darken($primary-color, 10%);
+
+        .buttonIcon {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .buttonText {
+        position: relative;
+        z-index: 1;
+      }
+
+      .buttonIcon {
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translateX(100%);
+        opacity: 0;
+        transition: transform 0.3s, opacity 0.3s;
       }
     }
   }

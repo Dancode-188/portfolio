@@ -28,8 +28,8 @@ const Header = () => {
       <nav className={`${styles.navbar} ${isActive ? styles.active : ''}`}>
         <div className={styles.navbarBrand}>
           <Link to="/">
-            <span className={styles.glitch} data-text="CYBER.DEV">
-              CYBER.DEV
+            <span className={styles.glitch} data-text="DANIEL BITENGO">
+              DANIEL BITENGO
             </span>
           </Link>
         </div>
@@ -56,7 +56,7 @@ const Header = () => {
         <h1>
           <TypeAnimation
             sequence={[
-              'CYBER.DEV',
+              'DANIEL BITENGO',
               1000,
               'Software Engineer',
               1000,
@@ -69,7 +69,7 @@ const Header = () => {
             cursor={true}
             repeat={Infinity}
             className={styles.glitch}
-            data-text="CYBER.DEV"
+            data-text="DANIEL BITENGO"
           />
         </h1>
         <p>

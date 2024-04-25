@@ -1,6 +1,7 @@
 // src/components/home/LiveCoding.jsx
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './LiveCoding.module.scss';
 
 const LiveCoding = () => {
@@ -16,12 +17,10 @@ const LiveCoding = () => {
           Join me in live coding sessions where I showcase my skills, provide insights, and build projects from scratch.
         </p>
       </div>
-
       <div className={styles.videoContainer}>
         {/* Replace this with your live coding video or embed */}
         <video src="/path/to/live-coding-video.mp4" controls></video>
       </div>
-
       <div className={styles.upcomingSessions}>
         <h3 className={styles.subtitle}>Upcoming Sessions</h3>
         <ul className={styles.sessionList}>
@@ -36,12 +35,12 @@ const LiveCoding = () => {
           {/* Add more upcoming sessions */}
         </ul>
       </div>
-
       <div className={styles.callToAction}>
         <p>Don't miss out on the opportunity to learn and interact with me during the live coding sessions!</p>
-        <a href="/register" className={styles.registerButton}>
-          Register Now
-        </a>
+        <Link to="/register" className={styles.registerButton}>
+          <span className={styles.buttonText}>Register Now</span>
+          <span className={styles.buttonIcon}>&#x2192;</span>
+        </Link>
       </div>
     </div>
   );

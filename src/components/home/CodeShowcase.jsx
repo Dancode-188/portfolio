@@ -10,7 +10,7 @@ const CodeShowcase = () => {
 
   useEffect(() => {
     const initialCode = `
-      // Welcome to CYBER.DEV's Code Showcase!
+      // Welcome to DANIEL's Code Showcase!
       // This interactive coding environment allows you to
       // explore my coding skills and experience firsthand.
 

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.5.2",
     "@react-three/drei": "^9.105.4",
     "@react-three/fiber": "^8.16.2",
     "@react-three/xr": "^5.7.1",
