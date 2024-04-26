@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import styles from './ServicePage.module.scss';
 import { FaCog } from 'react-icons/fa';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
 
 const COLORS = ['#00FF7F', '#4B0082', '#ADD8E6', '#FF00FF'];
 
@@ -65,12 +65,16 @@ const ServicePage = () => {
   };
 
   const generateVisualization = () => {
-    // Dummy data for the pie chart
+    if (!generatedPackage) {
+      return null;
+    }
+
+    // Generate data for the pie chart based on the generated package
     const data = [
-      { name: 'Development', value: 40 },
-      { name: 'Design', value: 30 },
-      { name: 'Testing', value: 20 },
-      { name: 'Deployment', value: 10 },
+      { name: 'Development', value: generatedPackage.price * 0.6 },
+      { name: 'Design', value: generatedPackage.price * 0.2 },
+      { name: 'Testing', value: generatedPackage.price * 0.1 },
+      { name: 'Deployment', value: generatedPackage.price * 0.1 },
     ];
 
     return (
@@ -78,11 +82,18 @@ const ServicePage = () => {
         <h3>Project Breakdown</h3>
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
-            <Pie data={data} dataKey="value" outerRadius={100} fill="#8884d8">
+            <Pie
+              data={data}
+              dataKey="value"
+              outerRadius={100}
+              fill="#8884d8"
+              label={({ name, value, percent }) => `${name}: ${(percent * 100).toFixed(2)}%`}
+            >
               {data.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
               ))}
             </Pie>
+            <Legend />
           </PieChart>
         </ResponsiveContainer>
       </div>
@@ -165,7 +176,7 @@ const ServicePage = () => {
         )}
       </div>
 
-      <div className={styles.visualizationContainer}>{generateVisualization()}</div>
+      <div className={styles.visualizationContainer}>{generatedPackage && generateVisualization()}</div>
     </div>
   );
 };
