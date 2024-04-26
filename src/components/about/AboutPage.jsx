@@ -8,29 +8,29 @@ const AboutPage = () => {
 
   const milestones = [
     {
-      year: '2015',
-      title: 'Started My Journey',
+      year: '2022',
+      title: 'Started My Coding Journey',
       description: 'Embarked on my software engineering journey with a passion for coding and problem-solving.',
     },
     {
-      year: '2017',
-      title: 'First Internship',
-      description: 'Landed my first internship at XYZ Company, where I gained hands-on experience in web development.',
-    },
-    {
-      year: '2019',
-      title: 'Graduated with Honors',
-      description: 'Graduated from ABC University with honors, earning a degree in Computer Science.',
-    },
-    {
-      year: '2021',
-      title: 'Led a Team',
-      description: 'Led a team of developers to successfully deliver a complex software project ahead of schedule.',
+      year: '2023',
+      title: 'Completed Online Courses',
+      description: 'Completed several online coding courses and tutorials to strengthen my programming skills.',
     },
     {
       year: '2023',
-      title: 'Launched My Own App',
-      description: 'Developed and launched my own innovative mobile app that gained thousands of users.',
+      title: 'Built Personal Projects',
+      description: 'Developed a portfolio of personal projects showcasing my abilities in web development and various programming languages.',
+    },
+    {
+      year: '2024',
+      title: 'Collaborated on Open Source',
+      description: 'Contributed to open source projects on GitHub, working with other developers to enhance existing codebases.',
+    },
+    {
+      year: '2024',
+      title: 'Seeking Professional Opportunities',
+      description: 'Actively seeking internships or entry-level positions to gain professional experience in the software engineering industry.',
     },
   ];
 
