@@ -1,9 +1,10 @@
 // src/components/services/ServicesPage.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import styles from './ServicePage.module.scss';
-import { FaCog } from 'react-icons/fa';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
 const COLORS = ['#00FF7F', '#4B0082', '#ADD8E6', '#FF00FF'];
 
@@ -13,28 +14,52 @@ const ServicePage = () => {
   const [timeline, setTimeline] = useState('');
   const [generatedPackage, setGeneratedPackage] = useState(null);
 
-  const servicePackages = {
+  const servicePackages = useMemo(() => ({
     basic: {
       name: 'Basic Package',
       description: 'Ideal for small-scale projects with limited features.',
       price: 1000,
       features: ['Responsive Design', 'Basic Functionality', 'Simple UI/UX'],
+      technologies: ['HTML', 'CSS', 'JavaScript'],
+      frameworks: ['React', 'Bootstrap'],
+      methodologies: ['Agile Development', 'Responsive Web Design'],
+      caseStudy: {
+        title: 'Simple Portfolio Website',
+        description: 'Developed a clean and responsive portfolio website for a freelance designer, showcasing their work and providing an easy way for potential clients to get in touch.',
+        technologies: ['HTML', 'CSS', 'JavaScript'],
+      },
     },
     standard: {
       name: 'Standard Package',
       description: 'Suitable for medium-sized projects with enhanced functionality.',
       price: 2500,
       features: ['Responsive Design', 'Advanced Functionality', 'Intuitive UI/UX', 'Integration with Third-Party Services'],
+      technologies: ['HTML', 'CSS', 'JavaScript', 'Node.js'],
+      frameworks: ['React', 'Express', 'MongoDB'],
+      methodologies: ['Agile Development', 'RESTful API Design', 'Responsive Web Design'],
+      caseStudy: {
+        title: 'E-commerce Platform',
+        description: 'Built a scalable e-commerce platform with secure payment integration, product management, and user authentication, enabling small businesses to establish an online presence and drive sales.',
+        technologies: ['React', 'Node.js', 'Express', 'MongoDB'],
+      },
     },
     premium: {
       name: 'Premium Package',
       description: 'Tailored for large-scale projects with advanced features and customization.',
       price: 5000,
       features: ['Responsive Design', 'Advanced Functionality', 'Custom UI/UX', 'Integration with Third-Party Services', 'Scalable Architecture', 'Ongoing Maintenance and Support'],
+      technologies: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'React', 'Angular'],
+      frameworks: ['Express', 'MongoDB', 'PostgreSQL', 'Firebase'],
+      methodologies: ['Agile Development', 'Test-Driven Development', 'Continuous Integration/Continuous Deployment'],
+      caseStudy: {
+        title: 'Enterprise CRM System',
+        description: 'Developed a feature-rich CRM system for a large enterprise, streamlining customer management, sales tracking, and team collaboration, resulting in improved efficiency and increased revenue.',
+        technologies: ['Angular', 'Node.js', 'Express', 'PostgreSQL'],
+      },
     },
-  };
+  }), []);
 
-  const generateServicePackage = () => {
+  const generateServicePackage = useCallback(() => {
     let selectedPackage;
 
     if (budget < 1500) {
@@ -62,6 +87,23 @@ const ServicePage = () => {
     }
 
     setGeneratedPackage(selectedPackage);
+  }, [budget, timeline, projectType, servicePackages]);
+
+  const [budgetRange, setBudgetRange] = useState([1000, 10000]);
+  const [timelineRange, setTimelineRange] = useState([1, 24]);
+
+  useEffect(() => {
+    generateServicePackage();
+  }, [projectType, budgetRange, timelineRange, generateServicePackage]);
+
+  const handleBudgetChange = (value) => {
+    setBudgetRange(value);
+    setBudget(value[1]);
+  };
+
+  const handleTimelineChange = (value) => {
+    setTimelineRange(value);
+    setTimeline(value[1]);
   };
 
   const generateVisualization = () => {
@@ -133,29 +175,36 @@ const ServicePage = () => {
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="budget">Budget</label>
-            <input
-              type="number"
-              id="budget"
-              value={budget}
-              onChange={(e) => setBudget(e.target.value)}
-              min="0"
-              step="100"
+            <Slider
+              range
+              min={1000}
+              max={10000}
+              value={budgetRange}
+              onChange={handleBudgetChange}
+              step={100}
             />
+            <div className={styles.rangeValues}>
+              <span>${budgetRange[0]} </span>
+              -
+              <span> ${budgetRange[1]}</span>
+            </div>
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="timeline">Timeline (in weeks)</label>
-            <input
-              type="number"
-              id="timeline"
-              value={timeline}
-              onChange={(e) => setTimeline(e.target.value)}
-              min="1"
+            <Slider
+              range
+              min={1}
+              max={24}
+              value={timelineRange}
+              onChange={handleTimelineChange}
+              step={1}
             />
+            <div className={styles.rangeValues}>
+              <span>{timelineRange[0]} weeks </span>
+              -
+              <span> {timelineRange[1]} weeks</span>
+            </div>
           </div>
-          <button type="button" className={styles.generateButton} onClick={generateServicePackage}>
-            <FaCog className={styles.buttonIcon} />
-            Generate Service Package
-          </button>
         </form>
       </div>
 
@@ -166,11 +215,36 @@ const ServicePage = () => {
             <p>{generatedPackage.description}</p>
             <div className={styles.packageDetails}>
               <p>Price: ${generatedPackage.price.toFixed(2)}</p>
+              <h4>Features:</h4>
               <ul>
                 {generatedPackage.features.map((feature, index) => (
                   <li key={index}>{feature}</li>
                 ))}
               </ul>
+              <h4>Technologies:</h4>
+              <ul>
+                {generatedPackage.technologies.map((tech, index) => (
+                  <li key={index}>{tech}</li>
+                ))}
+              </ul>
+              <h4>Frameworks:</h4>
+              <ul>
+                {generatedPackage.frameworks.map((framework, index) => (
+                  <li key={index}>{framework}</li>
+                ))}
+              </ul>
+              <h4>Methodologies:</h4>
+              <ul>
+                {generatedPackage.methodologies.map((methodology, index) => (
+                  <li key={index}>{methodology}</li>
+                ))}
+              </ul>
+              <h4>Case Study:</h4>
+              <div className={styles.caseStudy}>
+                <h5>{generatedPackage.caseStudy.title}</h5>
+                <p>{generatedPackage.caseStudy.description}</p>
+                <p>Technologies used: {generatedPackage.caseStudy.technologies.join(', ')}</p>
+              </div>
             </div>
           </div>
         )}
