@@ -14,7 +14,7 @@ const Footer = () => {
         <div className={styles.footerLinks}>
           <h3>
             <span className={styles.glitch} data-text="DANIEL BITENGO">
-            DANIEL BITENGO
+              DANIEL BITENGO
             </span>
           </h3>
           <nav>
@@ -67,9 +67,7 @@ const Footer = () => {
             {SOCIAL_LINKS.map((link, index) => (
               <li key={index}>
                 <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name}>
-                  <span className={styles.glitch} data-text={link.icon}>
-                    {link.icon}
-                  </span>
+                  <i className={`fab ${link.icon}`}></i>
                 </a>
               </li>
             ))}
