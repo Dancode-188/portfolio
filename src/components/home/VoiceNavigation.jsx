@@ -1,7 +1,7 @@
 // src/components/home/VoiceNavigation.jsx
 
 // VoiceNavigation.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './VoiceNavigation.module.scss';
 import { FaMicrophone, FaMicrophoneSlash } from 'react-icons/fa';
@@ -10,43 +10,53 @@ const VoiceNavigation = () => {
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState('');
   const navigate = useNavigate();
+  const recognitionRef = useRef(null);
 
   useEffect(() => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
-    recognition.continuous = true;
-    recognition.interimResults = true;
-    recognition.lang = 'en-US';
+    recognitionRef.current = new SpeechRecognition();
+    recognitionRef.current.continuous = true;
+    recognitionRef.current.interimResults = true;
+    recognitionRef.current.lang = 'en-US';
 
-    recognition.onresult = (event) => {
+    recognitionRef.current.onresult = (event) => {
       const interimTranscript = Array.from(event.results)
         .map((result) => result[0])
         .map((result) => result.transcript)
         .join('');
-
       setTranscript(interimTranscript);
     };
 
-    recognition.onend = () => {
+    recognitionRef.current.onend = () => {
       if (isListening) {
-        recognition.start();
+        recognitionRef.current.start();
       }
     };
+  }, [isListening]);
 
-    if (isListening) {
-      recognition.start();
+  const startListening = useCallback(() => {
+    if (!isListening) {
+      setIsListening(true);
+      recognitionRef.current.start();
     }
+  }, [isListening]);
 
-    return () => {
-      recognition.stop();
-    };
+  const stopListening = useCallback(() => {
+    if (isListening) {
+      setIsListening(false);
+      recognitionRef.current.stop();
+    }
   }, [isListening]);
 
   useEffect(() => {
     const processTranscript = () => {
       const lowercaseTranscript = transcript.toLowerCase();
 
-      if (lowercaseTranscript.includes('home') || lowercaseTranscript.includes('go to home')) {
+      if (lowercaseTranscript.includes('hello')) {
+        startListening();
+      } else if (lowercaseTranscript.includes('stop listening')) {
+        stopListening();
+      } else if (lowercaseTranscript.includes('home') || lowercaseTranscript.includes('go to home')) {
         navigate('/');
       } else if (lowercaseTranscript.includes('about') || lowercaseTranscript.includes('go to about')) {
         navigate('/about');
@@ -62,23 +72,24 @@ const VoiceNavigation = () => {
     };
 
     processTranscript();
-  }, [transcript, navigate]);
+  }, [transcript, navigate, startListening, stopListening]);
 
-  const toggleListening = () => {
-    setIsListening(!isListening);
-  };
+  useEffect(() => {
+    startListening();
+    return () => {
+      stopListening();
+    };
+  }, [startListening, stopListening]);
 
   return (
     <div className={styles.voiceNavigation}>
-      <button className={styles.microphoneButton} onClick={toggleListening}>
+      <button className={styles.microphoneButton} onClick={isListening ? stopListening : startListening}>
         {isListening ? (
           <FaMicrophoneSlash className={styles.microphoneIcon} />
         ) : (
           <FaMicrophone className={styles.microphoneIcon} />
         )}
-        <span className={styles.microphoneText}>
-          {isListening ? 'Stop Listening' : 'Start Listening'}
-        </span>
+        <span className={styles.microphoneText}>{isListening ? 'Listening...' : 'Start Listening'}</span>
       </button>
       <div className={styles.transcriptContainer}>
         <p className={styles.transcript}>{transcript}</p>
