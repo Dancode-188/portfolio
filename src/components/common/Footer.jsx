@@ -3,7 +3,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
-import { SOCIAL_LINKS } from '/Users/User/portfolio/src/utils/constants';
+import { SOCIAL_LINKS } from '../../utils/constants';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
