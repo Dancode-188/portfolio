@@ -8,16 +8,37 @@ import { SOCIAL_LINKS } from '../../utils/constants';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState('');
+  const [subscriptionStatus, setSubscriptionStatus] = useState('');
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Implement newsletter subscription logic
-    console.log('Subscribed email:', email);
-    setEmail('');
+    console.log("Form submitted");
+    console.log("Email:", email);
+
+    try {
+      const response = await fetch('http://localhost:5000/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setSubscriptionStatus('Successfully subscribed to the newsletter');
+        setEmail('');
+      } else {
+        console.error('Failed to subscribe to the newsletter');
+        setSubscriptionStatus('Failed to subscribe to the newsletter');
+      }
+    } catch (error) {
+      console.error('Error subscribing to the newsletter:', error);
+      setSubscriptionStatus('An error occurred while subscribing to the newsletter');
+    }
   };
 
   const scrollToTop = () => {
@@ -108,6 +129,7 @@ const Footer = () => {
             />
             <button type="submit">Subscribe</button>
           </form>
+          {subscriptionStatus && <p>{subscriptionStatus}</p>}
         </div>
         <div className={styles.footerContact}>
           <h3>
