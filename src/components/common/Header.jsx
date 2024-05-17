@@ -1,57 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+// Header.jsx
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
 import styles from './Header.module.scss';
 
 const Header = () => {
-  const [isActive, setIsActive] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    setIsActive(false);
-  }, [location.pathname]);
-
-  const toggleMenu = () => {
-    setIsActive(!isActive);
-  };
-
-  const menuItems = [
-    { label: 'Home', path: '/' },
-    { label: 'About', path: '/about' },
-    { label: 'Services', path: '/services' },
-    { label: 'Portfolio', path: '/portfolio' },
-    { label: 'Contact', path: '/contact' },
-  ];
-
   return (
     <header className={styles.header}>
-      <nav className={`${styles.navbar} ${isActive ? styles.active : ''}`}>
-        <div className={styles.navbarBrand}>
-          <Link to="/">
-            <span className={styles.glitch} data-text="DANIEL BITENGO">
-              DANIEL BITENGO
-            </span>
-          </Link>
-        </div>
-        <div className={`${styles.navbarMenu} ${isActive ? styles.active : ''}`}>
-          <ul>
-            {menuItems.map((item, index) => (
-              <li key={index}>
-                <Link to={item.path}>
-                  <span className={styles.glitch} data-text={item.label}>
-                    {item.label}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className={styles.navbarToggle} onClick={toggleMenu}>
-          <span className={styles.glitch} data-text="&#9776;">
-            &#9776;
-          </span>
-        </div>
-      </nav>
       <div className={styles.headerContent}>
         <h1>
           <TypeAnimation
@@ -70,13 +25,17 @@ const Header = () => {
             repeat={Infinity}
             className={styles.glitch}
             data-text="DANIEL BITENGO"
+            style={{ fontFamily: 'Custom Font, sans-serif' }}
           />
         </h1>
         <p>
-          <span className={styles.glitch} data-text="Crafting cutting-edge software solutions that push the boundaries of technology.">
+          <span className={styles.glitch} data-text="Crafting cutting-edge software solutions that push the boundaries of technology." style={{ fontFamily: 'Custom Font, sans-serif' }}>
             Crafting cutting-edge software solutions that push the boundaries of technology.
           </span>
         </p>
+        <Link to="/portfolio" className={styles.ctaButton}>
+          Explore Portfolio
+        </Link>
       </div>
     </header>
   );

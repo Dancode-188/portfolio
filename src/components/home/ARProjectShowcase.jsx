@@ -14,6 +14,16 @@ const ARCube = () => {
   );
 };
 
+const HitTestComponent = () => {
+  const hitTestRef = useHitTest();
+  return hitTestRef ? (
+    <mesh position={hitTestRef.point} rotation={[-Math.PI / 2, 0, 0]}>
+      <planeGeometry args={[1, 1]} />
+      <meshBasicMaterial color={0xff0000} transparent opacity={0.5} />
+    </mesh>
+  ) : null;
+};
+
 const ARProjectShowcase = () => {
   return (
     <div className={styles.arProjectShowcase}>
@@ -40,21 +50,10 @@ const ARProjectShowcase = () => {
             <HitTestComponent />
           </XR>
         </Canvas>
-        <ARButton /> {/* Use the ARButton component directly */}
+        <ARButton />
       </div>
     </div>
   );
-};
-
-const HitTestComponent = () => {
-  const hitTestRef = useHitTest();
-
-  return hitTestRef ? (
-    <mesh position={hitTestRef.point} rotation={[-Math.PI / 2, 0, 0]}>
-      <planeGeometry args={[1, 1]} />
-      <meshBasicMaterial color={0xff0000} transparent opacity={0.5} />
-    </mesh>
-  ) : null;
 };
 
 export default ARProjectShowcase;

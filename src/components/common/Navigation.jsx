@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Navigation.module.scss';
-import { NAV_LINKS } from '/Users/User/portfolio/src/utils/constants';
+import { NAV_LINKS } from '../../utils/constants';
 
 const Navigation = () => {
   const [isActive, setIsActive] = useState(false);

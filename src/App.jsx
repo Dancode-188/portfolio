@@ -5,7 +5,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
-//import Navigation from './components/common/Navigation';
+import Navigation from './components/common/Navigation';
 import HomePage from './components/home/HomePage';
 import RegisterPage from './components/register/RegisterPage';
 import AboutPage from './components/about/AboutPage';
@@ -21,6 +21,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <Navigation />
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />

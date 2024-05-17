@@ -32,6 +32,10 @@ export const NAV_LINKS = [
     url: "/projects",
   },
   {
+    name: "Services",
+    url: "/services",
+  },
+  {
     name: "Contact",
     url: "/contact",
   },

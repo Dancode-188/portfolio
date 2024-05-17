@@ -7,15 +7,16 @@
   padding: 1rem;
   background-color: #000;
   color: $text-color;
-  position: relative;
-  z-index: 1;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 
   .logoContainer {
     a {
       font-size: 1.5rem;
       font-weight: bold;
       text-decoration: none;
-
       @include glitch($primary-color);
     }
   }
@@ -34,7 +35,6 @@
           text-decoration: none;
           position: relative;
           transition: color 0.3s;
-
           @include glitch;
 
           &.active {
@@ -63,22 +63,24 @@
     display: none;
     cursor: pointer;
     font-size: 1.5rem;
-
     @include glitch;
   }
 }
 
 @media (max-width: 768px) {
   .navigation {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .logoContainer {
+      flex: 1;
+      text-align: center;
+    }
+
     .menuContainer {
       display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
       width: 100%;
-      background-color: #000;
-      padding: 1rem;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      text-align: center;
 
       &.active {
         display: block;
@@ -86,6 +88,7 @@
 
       ul {
         flex-direction: column;
+        align-items: center;
 
         li {
           margin-left: 0;
@@ -96,6 +99,20 @@
 
     .toggleMenu {
       display: block;
+    }
+
+    &.active {
+      .logoContainer {
+        margin-bottom: 1rem;
+      }
+
+      .menuContainer {
+        order: 3;
+      }
+
+      .toggleMenu {
+        order: 2;
+      }
     }
   }
 }
