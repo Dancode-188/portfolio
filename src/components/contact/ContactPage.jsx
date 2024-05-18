@@ -1,106 +1,78 @@
 // src/components/contact/ContactPage.jsx
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './ContactPage.module.scss';
-import { FaVideo, FaPhoneSlash, FaComments, FaCalendarAlt } from 'react-icons/fa';
-import ChatbotComponent from './ChatbotComponent';
+import { FaComments, FaCalendarAlt } from 'react-icons/fa';
+//import ChatbotComponent from './ChatbotComponent';
 import SchedulerComponent from './SchedulerComponent';
-
-const VideoChat = () => {
-  const [localStream, setLocalStream] = useState(null);
-  const [remoteStream, setRemoteStream] = useState(null);
-  const [isCallStarted, setIsCallStarted] = useState(false);
-  const localVideoRef = useRef(null);
-  const remoteVideoRef = useRef(null);
-
-  useEffect(() => {
-    const startLocalStream = async () => {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-        setLocalStream(stream);
-        if (localVideoRef.current) {
-          localVideoRef.current.srcObject = stream;
-        }
-      } catch (error) {
-        console.error('Error accessing local media devices:', error);
-      }
-    };
-
-    startLocalStream();
-
-    return () => {
-      if (localStream) {
-        localStream.getTracks().forEach((track) => track.stop());
-      }
-    };
-  }, [localStream]);
-
-  const startCall = async () => {
-    try {
-      const peerConnection = new RTCPeerConnection();
-
-      localStream.getTracks().forEach((track) => peerConnection.addTrack(track, localStream));
-
-      peerConnection.ontrack = (event) => {
-        setRemoteStream(event.streams[0]);
-        if (remoteVideoRef.current) {
-          remoteVideoRef.current.srcObject = event.streams[0];
-        }
-      };
-
-      const offer = await peerConnection.createOffer();
-      await peerConnection.setLocalDescription(offer);
-
-      // Send offer to the remote peer (e.g., via a signaling server)
-      // ...
-
-      setIsCallStarted(true);
-    } catch (error) {
-      console.error('Error starting video call:', error);
-    }
-  };
-
-  const endCall = () => {
-    if (localStream) {
-      localStream.getTracks().forEach((track) => track.stop());
-    }
-    if (remoteStream) {
-      remoteStream.getTracks().forEach((track) => track.stop());
-    }
-    setLocalStream(null);
-    setRemoteStream(null);
-    setIsCallStarted(false);
-  };
-
-  return (
-    <div className={styles.videoChat}>
-      <h2 className={styles.videoChatTitle}>Video Chat</h2>
-      <div className={styles.videoContainer}>
-        <video ref={localVideoRef} autoPlay muted className={styles.localVideo} />
-        {remoteStream && <video ref={remoteVideoRef} autoPlay className={styles.remoteVideo} />}
-      </div>
-      <div className={styles.videoControls}>
-        {!isCallStarted ? (
-          <button onClick={startCall} className={styles.startCallButton}>
-            <FaVideo className={styles.videoIcon} />
-            Start Call
-          </button>
-        ) : (
-          <button onClick={endCall} className={styles.endCallButton}>
-            <FaPhoneSlash className={styles.videoIcon} />
-            End Call
-          </button>
-        )}
-      </div>
-    </div>
-  );
-};
+import axios from 'axios';
 
 const ContactPage = () => {
   const [selectedOption, setSelectedOption] = useState('contact-form');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [formErrors, setFormErrors] = useState({});
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formSubmitError, setFormSubmitError] = useState(false);
 
   const handleOptionChange = (option) => {
     setSelectedOption(option);
+  };
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const validateForm = () => {
+    let errors = {};
+    let isValid = true;
+
+    if (!formData.name.trim()) {
+      errors.name = 'Name is required';
+      isValid = false;
+    }
+
+    if (!formData.email.trim()) {
+      errors.email = 'Email is required';
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = 'Invalid email address';
+      isValid = false;
+    }
+
+    if (!formData.message.trim()) {
+      errors.message = 'Message is required';
+      isValid = false;
+    }
+
+    setFormErrors(errors);
+    return isValid;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (validateForm()) {
+      try {
+        await axios.post(process.env.REACT_APP_BACKEND_URL_CONTACT, formData);
+        setFormSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+        });
+        setFormErrors({});
+      } catch (error) {
+        console.error('Error submitting contact form:', error);
+        setFormSubmitError(true);
+      }
+    }
   };
 
   const renderContent = () => {
@@ -109,18 +81,51 @@ const ContactPage = () => {
         return (
           <div className={styles.contactForm}>
             <h2 className={styles.formTitle}>Contact Form</h2>
-            <form>
+            {formSubmitted && (
+              <div className={styles.successMessage}>
+                Thank you for your message! We'll get back to you soon.
+              </div>
+            )}
+            {formSubmitError && (
+              <div className={styles.errorMessage}>
+                Oops! Something went wrong. Please try again later.
+              </div>
+            )}
+            <form onSubmit={handleSubmit}>
               <div className={styles.formGroup}>
                 <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" required />
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                />
+                {formErrors.name && <span className={styles.errorText}>{formErrors.name}</span>}
               </div>
               <div className={styles.formGroup}>
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" required />
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+                {formErrors.email && <span className={styles.errorText}>{formErrors.email}</span>}
               </div>
               <div className={styles.formGroup}>
                 <label htmlFor="message">Message</label>
-                <textarea id="message" name="message" required></textarea>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                ></textarea>
+                {formErrors.message && <span className={styles.errorText}>{formErrors.message}</span>}
               </div>
               <button type="submit" className={styles.submitButton}>
                 Send Message
@@ -128,15 +133,13 @@ const ContactPage = () => {
             </form>
           </div>
         );
-      case 'video-chat':
-        return <VideoChat />;
-      case 'chatbot':
+      /*case 'chatbot':
         return (
           <div className={styles.chatbot}>
             <h2 className={styles.chatbotTitle}>Chatbot</h2>
             <ChatbotComponent />
           </div>
-        );
+        );*/
       case 'scheduler':
         return (
           <div className={styles.scheduler}>
@@ -165,20 +168,13 @@ const ContactPage = () => {
             <FaComments className={styles.navIcon} />
             Contact Form
           </button>
-          <button
-            className={`${styles.navButton} ${selectedOption === 'video-chat' ? styles.active : ''}`}
-            onClick={() => handleOptionChange('video-chat')}
-          >
-            <FaVideo className={styles.navIcon} />
-            Video Chat
-          </button>
-          <button
+          {/*<button
             className={`${styles.navButton} ${selectedOption === 'chatbot' ? styles.active : ''}`}
             onClick={() => handleOptionChange('chatbot')}
           >
             <FaComments className={styles.navIcon} />
             Chatbot
-          </button>
+  </button>*/}
           <button
             className={`${styles.navButton} ${selectedOption === 'scheduler' ? styles.active : ''}`}
             onClick={() => handleOptionChange('scheduler')}

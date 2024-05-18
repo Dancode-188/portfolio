@@ -5,6 +5,7 @@ $text-color: #ADD8E6;
 $glitch-color: #FF00FF;
 $glitch-offset: 3px;
 $glitch-duration: 0.5s;
+$success-color: #00ff00;
 
 // Mixins
 @mixin glitch($color: $text-color) {

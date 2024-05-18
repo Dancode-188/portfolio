@@ -20,7 +20,7 @@ const Footer = () => {
     console.log("Email:", email);
 
     try {
-      const response = await fetch(process.env.REACT_APP_BACKEND_URL, {
+      const response = await fetch(process.env.REACT_APP_BACKEND_URL_SUBSCRIBE, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
