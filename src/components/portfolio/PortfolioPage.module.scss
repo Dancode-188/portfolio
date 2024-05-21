@@ -1,4 +1,3 @@
-// src/components/portfolio/PortfolioPage.module.scss
 @import '../styles/mixins';
 
 .portfolioPage {
@@ -15,62 +14,178 @@
 
     .title {
       font-size: 3rem;
-      margin-bottom: 1rem;
-
-      .glitch {
-        @include glitch;
-      }
+      margin-bottom: 2rem;
+      text-align: center;
+      @include glitch;
+      @include textGlitch;
+      @include colorGlitch;
     }
 
     .subtitle {
-      font-size: 1.5rem;
-
-      .glitch {
-        @include glitch;
-      }
-    }
-  }
-
-  .vr360Container {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    background-color: #000;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba($primary-color, 0.5);
-    margin-bottom: 2rem;
-
-    canvas {
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  .projectDetails {
-    width: 100%;
-    max-width: 800px;
-
-    .projectTitle {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: $primary-color;
+      font-size: 1.8rem;
       @include glitch;
+      @include textGlitch;
+      @include colorGlitch;
     }
+  }
 
-    .projectList {
-      list-style: none;
-      padding: 0;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 
-      .projectItem {
-        margin-bottom: 1rem;
-        font-size: 1.2rem;
+    .filterContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
 
-        .projectItemTitle {
-          color: $secondary-color;
-          @include glitch;
+      h3 {
+        color: $accent-color;
+        margin-bottom: 0.5rem;
+      }
+
+      div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        button {
+          background-color: transparent;
+          color: $text-color;
+          border: 1px solid $primary-color;
+          border-radius: 4px;
+          padding: 0.5rem 1rem;
+          margin: 0.25rem;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+
+          &:hover {
+            background-color: rgba($primary-color, 0.2);
+          }
         }
       }
     }
+  }
+
+  .timelineContainer {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+
+    .timeline {
+      display: flex;
+      background-color: rgba($primary-color, 0.1);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba($primary-color, 0.5);
+
+      .timelineItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: rgba($primary-color, 0.2);
+        }
+
+        .timelineDate {
+          font-size: 1.2rem;
+          color: $secondary-color;
+          margin-bottom: 0.5rem;
+        }
+
+        .timelineIllustration {
+          width: 200px;
+          height: 200px;
+          margin-bottom: 0.5rem;
+        }
+
+        .timelineTitle {
+          font-size: 1.5rem;
+          color: $accent-color;
+          text-shadow: 0 0 10px rgba($accent-color, 0.5);
+        }
+      }
+    }
+  }
+
+  .caseStudyContainer {
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba($primary-color, 0.1);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba($primary-color, 0.5);
+
+    .caseStudy {
+      height: auto;
+      overflow: auto;
+      padding-right: 1rem;
+
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: rgba($text-color, 0.1);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: rgba($text-color, 0.5);
+        border-radius: 4px;
+      }
+
+      .caseStudyTitle {
+        font-size: 2rem;
+        color: $secondary-color;
+        margin-bottom: 1rem;
+      }
+
+      .caseStudyContent {
+        color: $text-color;
+
+        h3 {
+          color: $primary-color;
+          margin-bottom: 0.5rem;
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+          margin-bottom: 1rem;
+
+          li {
+            margin-bottom: 0.5rem;
+            transition: transform 0.3s ease;
+
+            &.hoveredFeature {
+              transform: scale(1.1);
+            }
+          }
+        }
+
+        img {
+          max-width: 100%;
+          margin-bottom: 1rem;
+          border-radius: 4px;
+          box-shadow: 0 0 10px rgba($primary-color, 0.5);
+        }
+      }
+    }
+  }
+
+  .glitch {
+    @include glitch($glitch-color);
+  }
+
+  .colorGlitch {
+    @include colorGlitch;
   }
 }

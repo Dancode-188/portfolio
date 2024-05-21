@@ -28,8 +28,8 @@ export const NAV_LINKS = [
     url: "/about",
   },
   {
-    name: "Projects",
-    url: "/projects",
+    name: "Portfolio",
+    url: "/portfolio",
   },
   {
     name: "Services",
