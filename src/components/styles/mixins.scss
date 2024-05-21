@@ -7,6 +7,10 @@ $glitch-offset: 3px;
 $glitch-duration: 0.5s;
 $success-color: #00ff00;
 $accent-color: #ffc107;
+$error-color: #ff4d4d; // Color for error messages
+$tooltip-color: #aaa; // Color for tooltips
+$tooltip-background-color: #333; // Set the background color for the tooltip
+$tooltip-text-color: #fff; // Set the text color for the tooltip
 
 // Mixins
 @mixin glitch($color: $text-color) {

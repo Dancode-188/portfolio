@@ -4,28 +4,35 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
   background-color: #000;
   color: $text-color;
+
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+  }
 
   .header {
     text-align: center;
     margin-bottom: 2rem;
 
     .title {
-      font-size: 3rem;
-      margin-bottom: 2rem;
-      text-align: center;
-      @include glitch;
-      @include textGlitch;
-      @include colorGlitch;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: $primary-color;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
     }
 
     .subtitle {
-      font-size: 1.8rem;
-      @include glitch;
-      @include textGlitch;
-      @include colorGlitch;
+      font-size: 1.2rem;
+      color: $secondary-color;
+
+      @media (max-width: 768px) {
+        font-size: 1rem;
+      }
     }
   }
 
@@ -39,7 +46,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
 
       h3 {
         color: $accent-color;
@@ -64,6 +71,11 @@
           &:hover {
             background-color: rgba($primary-color, 0.2);
           }
+
+          @media (max-width: 480px) {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
+          }
         }
       }
     }
@@ -77,10 +89,16 @@
 
     .timeline {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       background-color: rgba($primary-color, 0.1);
-      padding: 2rem;
+      padding: 1rem;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba($primary-color, 0.5);
+
+      @media (max-width: 768px) {
+        padding: 0.5rem;
+      }
 
       .timelineItem {
         display: flex;
@@ -95,22 +113,39 @@
           background-color: rgba($primary-color, 0.2);
         }
 
+        @media (max-width: 768px) {
+          padding: 0.5rem;
+        }
+
         .timelineDate {
           font-size: 1.2rem;
           color: $secondary-color;
           margin-bottom: 0.5rem;
+
+          @media (max-width: 768px) {
+            font-size: 1rem;
+          }
         }
 
         .timelineIllustration {
-          width: 200px;
-          height: 200px;
+          width: 150px;
+          height: 150px;
           margin-bottom: 0.5rem;
+
+          @media (max-width: 768px) {
+            width: 100px;
+            height: 100px;
+          }
         }
 
         .timelineTitle {
           font-size: 1.5rem;
           color: $accent-color;
           text-shadow: 0 0 10px rgba($accent-color, 0.5);
+
+          @media (max-width: 768px) {
+            font-size: 1.2rem;
+          }
         }
       }
     }
@@ -120,9 +155,13 @@
     width: 100%;
     max-width: 800px;
     background-color: rgba($primary-color, 0.1);
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba($primary-color, 0.5);
+
+    @media (max-width: 768px) {
+      padding: 0.5rem;
+    }
 
     .caseStudy {
       height: auto;
@@ -146,6 +185,10 @@
         font-size: 2rem;
         color: $secondary-color;
         margin-bottom: 1rem;
+
+        @media (max-width: 768px) {
+          font-size: 1.5rem;
+        }
       }
 
       .caseStudyContent {
@@ -154,6 +197,10 @@
         h3 {
           color: $primary-color;
           margin-bottom: 0.5rem;
+
+          @media (max-width: 768px) {
+            font-size: 1.2rem;
+          }
         }
 
         ul {
@@ -167,6 +214,10 @@
 
             &.hoveredFeature {
               transform: scale(1.1);
+            }
+
+            @media (max-width: 768px) {
+              font-size: 0.9rem;
             }
           }
         }
