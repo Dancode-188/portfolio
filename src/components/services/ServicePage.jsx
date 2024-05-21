@@ -1,6 +1,7 @@
 // src/components/services/ServicesPage.jsx
 // eslint-disable-next-line
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './ServicePage.module.scss';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
 import Slider from 'rc-slider';
@@ -331,7 +332,9 @@ const ServicePage = () => {
                   <p>{generatedPackage.caseStudy.description}</p>
                   <p>Technologies used: {generatedPackage.caseStudy.technologies.join(', ')}</p>
                 </div>
-                <button className={styles.contactBtn}>Contact Us</button>
+                <Link to="/contact" className={styles.contactBtn}>
+                  Contact Us
+                </Link>
               </div>
             </div>
           )}

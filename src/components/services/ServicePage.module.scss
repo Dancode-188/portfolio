@@ -234,8 +234,12 @@
         display: block;
         margin-top: 1rem;
         padding: 0.8rem 1.6rem;
+        color: #fff;
+        text-decoration: none;
         font-size: 1.2rem;
+        font-weight: bold;
         border: none;
+        width: 20%;
         border-radius: 4px;
         background-color: $primary-color;
         color: $text-color;
@@ -280,6 +284,19 @@
         @include glitch;
         @include textGlitch;
         @include colorGlitch;
+      }
+
+      .recharts-responsive-container {
+        max-width: 100%;
+        margin: 0 auto;
+
+        @media (max-width: 768px) {
+          max-height: 300px;
+        }
+
+        @media (max-width: 480px) {
+          max-height: 250px;
+        }
       }
     }
   }

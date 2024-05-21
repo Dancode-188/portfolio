@@ -6,10 +6,18 @@
   box-sizing: border-box;
 }
 
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #000;
   color: #fff;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 a {
@@ -18,9 +26,10 @@ a {
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  margin: 0 auto; /* Center container horizontally */
   padding: 0 20px;
+  background-color: #000; /* Ensure container background matches body */
 }
 
 .glitch {
