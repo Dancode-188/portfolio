@@ -68,9 +68,9 @@ const OnlineChatCaseStudy = () => {
           <h3 className={`${styles.glitch} ${styles.colorGlitch}`} data-text="Screenshots">
             Screenshots
           </h3>
-          <img src="media/image1.png" alt="Screenshot 1" className={styles.caseStudyImage} />
-          <img src="media/image2.png" alt="Screenshot 2" className={styles.caseStudyImage} />
-          <img src="media/image3.png" alt="Screenshot 3" className={styles.caseStudyImage} />
+          <img src="../../assets/images/Online-chat-application1.jpg" alt="Screenshot 1" className={styles.caseStudyImage} />
+          <img src="../../assets/images/Online-chat-application2.jpg" alt="Screenshot 2" className={styles.caseStudyImage} />
+          <img src="../../assets/images/Online-chat-application3.jpg" alt="Screenshot 3" className={styles.caseStudyImage} />
         </div>
       </animated.div>
     </div>

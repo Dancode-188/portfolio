@@ -4,9 +4,189 @@
   background-color: #000;
   color: $text-color;
 
-  .section {
-    padding: 4rem 0;
-    overflow: hidden;
+  .diagonalSplit {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+
+    .heroSection {
+      flex: 1;
+      padding: 2rem;
+      background-color: rgba($text-color, 0.1);
+      text-align: center;
+
+      img {
+        max-width: 200px;
+        border-radius: 50%;
+      }
+
+      .links {
+        margin-top: 1rem;
+
+        a {
+          margin-right: 1rem;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .featuredProjects {
+      flex: 1;
+      padding: 2rem;
+      background-color: rgba($text-color, 0.1);
+
+      .projectCarousel {
+        display: flex;
+        overflow-x: auto;
+
+        .projectItem {
+          flex: 0 0 300px;
+          margin-right: 1rem;
+          background-color: rgba($text-color, 0.1);
+          border-radius: 8px;
+          padding: 2rem;
+          box-shadow: 0 0 10px rgba($text-color, 0.3);
+          transition: transform 0.3s;
+
+          &:hover {
+            transform: translateY(-5px);
+          }
+
+          img {
+            max-width: 100%;
+          }
+
+          h3 {
+            margin: 1rem 0;
+            color: $primary-color;
+            @include glitch;
+          }
+
+          .projectLink {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: $primary-color;
+            color: #000;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+
+            &:hover {
+              background-color: darken($primary-color, 10%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .aboutAndSkills {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: rgba($text-color, 0.1);
+
+    .aboutTeaser {
+      flex: 1;
+      margin-right: 2rem;
+    }
+
+    .technicalSkills {
+      flex: 1;
+
+      .skillItem {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .skillIcon {
+          width: 32px;
+          height: 32px;
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+
+  .servicesAndTestimonials {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: rgba($text-color, 0.1);
+
+    .servicesOverview {
+      flex: 1;
+      margin-right: 2rem;
+    }
+
+    .testimonials {
+      flex: 1;
+
+      .testimonialItem {
+        margin-bottom: 2rem;
+
+        blockquote {
+          font-style: italic;
+          margin-bottom: 0.5rem;
+        }
+
+        cite {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .recentUpdates {
+    padding: 2rem;
+    background-color: rgba($text-color, 0.1);
+
+    .updateItem {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+
+      img {
+        max-width: 100px;
+        margin-right: 1rem;
+      }
+
+      h3 {
+        margin: 0;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .cta {
+    padding: 2rem;
+    background-color: rgba($text-color, 0.1);
+    text-align: center;
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+
+      input,
+      textarea {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+        background-color: rgba($text-color, 0.1);
+        color: $text-color;
+        border: 1px solid $text-color;
+      }
+
+      button {
+        padding: 0.5rem 1rem;
+        border: none;
+        cursor: pointer;
+      }
+    }
   }
 
   .sectionTitle {
@@ -15,7 +195,6 @@
     margin-bottom: 2rem;
     position: relative;
     z-index: 1;
-
     @include glitch;
 
     &::before {
@@ -32,63 +211,48 @@
     }
   }
 
-  .sectionContent {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+  .glitchText {
+    @include glitch;
   }
 
-  .featuredProjects {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 2rem;
-    margin-top: 4rem;
+  .glitchLink {
+    color: $text-color;
+    text-decoration: none;
+    position: relative;
+    @include glitch;
 
-    .projectItem {
-      background-color: rgba($text-color, 0.1);
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: 0 0 10px rgba($text-color, 0.3);
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $primary-color;
+      transform-origin: left;
+      transform: scaleX(0);
       transition: transform 0.3s;
+    }
 
-      &:hover {
-        transform: translateY(-5px);
-      }
-
-      h3 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-        color: $primary-color;
-
-        @include glitch;
-      }
-
-      p {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-      }
-
-      .projectLink {
-        display: inline-block;
-        padding: 0.5rem 1rem;
-        background-color: $primary-color;
-        color: #000;
-        text-decoration: none;
-        border-radius: 4px;
-        transition: background-color 0.3s;
-
-        &:hover {
-          background-color: darken($primary-color, 10%);
-        }
+    &:hover {
+      &::before {
+        transform: scaleX(1);
       }
     }
   }
 
-  .sectionDivider {
-    width: 100%;
-    height: 1px;
-    background-color: rgba($text-color, 0.3);
-    margin: 4rem 0;
+  .glitchButton {
+    background-color: $primary-color;
+    color: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    @include glitch;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
   }
 }
 

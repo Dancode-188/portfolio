@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ProjectTimeline from './ProjectTimeline';
 import ProjectACaseStudy from './ProjectACaseStudy';
-import ProjectBCaseStudy from './ProjectBCaseStudy';
+import SimpleClockCaseStudy from './SimpleClockCaseStudy';
 import OnlineChatCaseStudy from './OnlineChatCaseStudy';
 import styles from './PortfolioPage.module.scss';
 
@@ -18,10 +18,10 @@ const PortfolioPage = () => {
       categories: ['Web Development', 'React'],
     },
     {
-      title: 'Project B',
-      description: 'After the success of Project A, I worked on...',
-      date: 'June 2022',
-      categories: ['Mobile Development', 'React Native'],
+      title: 'Simple Clock Application',
+      description: 'A simple Java application that displays the current time and date in a classic format.',
+      date: 'February 2023',
+      categories: ['Desktop', 'Java'],
     },
     {
       title: 'Online Chat Application',
@@ -58,8 +58,8 @@ const PortfolioPage = () => {
         console.log('Rendering ProjectACaseStudy');
         return <ProjectACaseStudy />;
       case 1:
-        console.log('Rendering ProjectBCaseStudy');
-        return <ProjectBCaseStudy />;
+        console.log('Rendering SimpleClockCaseStudy');
+        return <SimpleClockCaseStudy />;
       case 2:
         console.log('Rendering OnlineChatCaseStudy');
         return <OnlineChatCaseStudy />;
