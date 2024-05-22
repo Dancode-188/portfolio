@@ -3,6 +3,9 @@
 .homePage {
   background-color: #000;
   color: $text-color;
+  min-height: 100vh; // Add this line
+  display: flex; // Add this line
+  flex-direction: column; // Add this line
 
   .diagonalSplit {
     display: flex;
@@ -188,6 +191,7 @@
   .recentUpdates {
     padding: 2rem;
     background-color: rgba($text-color, 0.1);
+    margin-bottom: 2rem; // Added margin-bottom
 
     .updateItem {
       display: flex;
@@ -210,29 +214,85 @@
   }
 
   .cta {
-    padding: 2rem;
-    background-color: rgba($text-color, 0.1);
-    text-align: center;
+    background-color: #1c1c1c;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    box-shadow: 0 0 10px rgba(0, 255, 127, 0.3);
+
+    @media (max-width: 768px) {
+      padding: 15px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 10px;
+    }
 
     form {
       max-width: 400px;
       margin: 0 auto;
 
-      input,
-      textarea {
-        display: block;
-        width: 100%;
-        margin-bottom: 1rem;
-        padding: 0.5rem;
-        background-color: rgba($text-color, 0.1);
-        color: $text-color;
-        border: 1px solid $text-color;
+      .formGroup {
+        margin-bottom: 20px;
+
+        label {
+          display: block;
+          margin-bottom: 5px;
+          color: $text-color;
+          font-size: 16px;
+
+          @media (max-width: 480px) {
+            font-size: 14px;
+          }
+        }
+
+        input,
+        textarea {
+          width: 90%;
+          padding: 10px;
+          border: none;
+          border-radius: 4px;
+          background-color: #2d2d2d;
+          color: $text-color;
+          font-size: 16px;
+          transition: background-color 0.3s, box-shadow 0.3s;
+
+          @media (max-width: 480px) {
+            font-size: 14px;
+            padding: 8px;
+          }
+
+          &:focus {
+            outline: none;
+            background-color: #3d3d3d;
+            box-shadow: 0 0 5px rgba(0, 255, 127, 0.5), 0 0 10px rgba(0, 255, 127, 0.3);
+          }
+        }
       }
 
-      button {
-        padding: 0.5rem 1rem;
+      .submitButton {
+        display: block;
+        width: 100%;
+        padding: 10px;
         border: none;
+        border-radius: 4px;
+        background-color: $primary-color;
+        color: #000;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
         cursor: pointer;
+        transition: background-color 0.3s;
+
+        @media (max-width: 480px) {
+          font-size: 14px;
+          padding: 8px;
+        }
+
+        &:hover {
+          background-color: darken($primary-color, 10%);
+        }
       }
     }
   }

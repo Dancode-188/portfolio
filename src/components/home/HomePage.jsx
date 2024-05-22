@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import styles from './HomePage.module.scss';
 import projectThumbnail1 from '../../assets/images/Online-chat-application1.jpg';
 import projectThumbnail2 from '../../assets/images/Simple-clock2.jpg';
@@ -7,6 +8,68 @@ import skillIcon1 from '../../assets/images/solid_color.jpg';
 import skillIcon2 from '../../assets/images/solid_color.jpg';
 
 const HomePage = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [formErrors, setFormErrors] = useState({});
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formSubmitError, setFormSubmitError] = useState(false);
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const validateForm = () => {
+    let errors = {};
+    let isValid = true;
+
+    if (!formData.name.trim()) {
+      errors.name = 'Name is required';
+      isValid = false;
+    }
+
+    if (!formData.email.trim()) {
+      errors.email = 'Email is required';
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errors.email = 'Invalid email address';
+      isValid = false;
+    }
+
+    if (!formData.message.trim()) {
+      errors.message = 'Message is required';
+      isValid = false;
+    }
+
+    setFormErrors(errors);
+    return isValid;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (validateForm()) {
+      try {
+        await axios.post(process.env.REACT_APP_BACKEND_URL_CONTACT, formData);
+        setFormSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+        });
+        setFormErrors({});
+      } catch (error) {
+        console.error('Error submitting contact form:', error);
+        setFormSubmitError(true);
+      }
+    }
+  };
+
   return (
     <div className={styles.homePage}>
       {/* Diagonal Split Layout */}
@@ -90,11 +153,55 @@ const HomePage = () => {
       <div className={styles.cta}>
         <h2>Get in Touch</h2>
         <p>Invite your visitors to contact you or take a specific action</p>
-        <form>
-          <input type="text" placeholder="Name" />
-          <input type="email" placeholder="Email" />
-          <textarea placeholder="Message"></textarea>
-          <button type="submit">Submit</button>
+        {formSubmitted && (
+          <div className={styles.successMessage}>
+            Thank you for your message! We'll get back to you soon.
+          </div>
+        )}
+        {formSubmitError && (
+          <div className={styles.errorMessage}>
+            Oops! Something went wrong. Please try again later.
+          </div>
+        )}
+        <form onSubmit={handleSubmit}>
+          <div className={styles.formGroup}>
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+            />
+            {formErrors.name && <span className={styles.errorText}>{formErrors.name}</span>}
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+            />
+            {formErrors.email && <span className={styles.errorText}>{formErrors.email}</span>}
+          </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              required
+            ></textarea>
+            {formErrors.message && <span className={styles.errorText}>{formErrors.message}</span>}
+          </div>
+          <button type="submit" className={styles.submitButton}>
+            Send Message
+          </button>
         </form>
       </div>
     </div>
