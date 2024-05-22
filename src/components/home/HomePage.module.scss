@@ -100,6 +100,17 @@
           }
         }
       }
+
+      @media (max-width: 480px) {
+        padding: 1rem; // Added padding adjustment
+
+        .projectCarousel {
+          .projectItem {
+            flex: 0 0 90vw; // Adjusted from 80vw to 90vw
+            padding: 1rem; // Reduced padding for project items
+          }
+        }
+      }
     }
   }
 
