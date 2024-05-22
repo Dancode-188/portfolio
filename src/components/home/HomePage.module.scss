@@ -42,6 +42,7 @@
       .projectCarousel {
         display: flex;
         overflow-x: auto;
+        scroll-snap-type: x mandatory;
 
         .projectItem {
           flex: 0 0 300px;
@@ -51,6 +52,11 @@
           padding: 2rem;
           box-shadow: 0 0 10px rgba($text-color, 0.3);
           transition: transform 0.3s;
+          scroll-snap-align: center;
+
+          &:last-child {
+            margin-right: 0;
+          }
 
           &:hover {
             transform: translateY(-5px);
@@ -84,6 +90,12 @@
 
       @media (max-width: 768px) {
         flex: 1 1 100%;
+
+        .projectCarousel {
+          .projectItem {
+            flex: 0 0 80vw;
+          }
+        }
       }
     }
   }
