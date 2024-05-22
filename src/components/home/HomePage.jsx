@@ -56,8 +56,14 @@ const HomePage = () => {
       {/* Services Overview and Testimonials */}
       <div className={styles.servicesAndTestimonials}>
         <div className={styles.servicesOverview}>
-          <h2>Services</h2>
-          <p>Overview of the services you offer</p>
+        <h2>Services</h2>
+          <ul>
+            <li>Web Development: I offer professional web development services, specializing in creating responsive and user-friendly websites using modern technologies such as React, Node.js, and MongoDB.</li>
+            <li>Data Analysis and Visualization: With expertise in Python and data visualization libraries like Matplotlib and Seaborn, I can help you transform your data into insightful visualizations and actionable insights.</li>
+            <li>Software Engineering: From designing and implementing robust software applications to optimizing existing codebases, I provide comprehensive software engineering services tailored to your specific needs.</li>
+            <li>Technical Writing and Documentation: Clear and concise documentation is essential for any project. I can help you create well-structured technical documents, user guides, and API references.</li>
+            <li>Tutoring and Mentoring: If you're looking to enhance your coding skills or seeking guidance on a specific topic, I offer personalized tutoring and mentoring services to help you achieve your learning goals.</li>
+          </ul>
           <a href="/services">Learn More</a>
         </div>
         <div className={styles.testimonials}>
