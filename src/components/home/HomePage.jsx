@@ -3,7 +3,7 @@ import axios from 'axios';
 import styles from './HomePage.module.scss';
 import projectThumbnail1 from '../../assets/images/Online-chat-application1.jpg';
 import projectThumbnail2 from '../../assets/images/Simple-clock2.jpg';
-import updateThumbnail from '../../assets/images/solid_color.jpg';
+//import updateThumbnail from '../../assets/images/solid_color.jpg';
 import skillIcon1 from '../../assets/images/solid_color.jpg';
 import skillIcon2 from '../../assets/images/solid_color.jpg';
 
@@ -135,17 +135,6 @@ const HomePage = () => {
             <blockquote>"Testimonial quote goes here."</blockquote>
             <cite>- Client Name, Company</cite>
           </div>
-        </div>
-      </div>
-
-      {/* Recent Updates or Blog Highlights (Optional) */}
-      <div className={styles.recentUpdates}>
-        <h2>Recent Updates</h2>
-        <div className={styles.updateItem}>
-          <img src={updateThumbnail} alt="Update 1" />
-          <h3>Update Title</h3>
-          <p>Brief excerpt or description</p>
-          <a href="/">Read More</a>
         </div>
       </div>
 
