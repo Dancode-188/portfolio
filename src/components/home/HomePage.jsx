@@ -209,7 +209,7 @@ const HomePage = () => {
       {/* Call-to-Action (CTA) */}
       <div className={styles.cta}>
         <h2>Get in Touch</h2>
-        <p>Invite your visitors to contact you or take a specific action</p>
+        <p>Let's build something amazing together.</p>
         {formSubmitted && (
           <div className={styles.successMessage}>
             Thank you for your message! We'll get back to you soon.

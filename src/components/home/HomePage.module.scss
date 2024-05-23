@@ -15,8 +15,11 @@
     .heroSection {
       flex: 1 1 50%;
       padding: 2rem;
-      background-color: rgba($text-color, 0.1);
+      background-color: rgba($text-color, 0.05); // Subtle background color
       text-align: center;
+      border-radius: 8px; // Rounded corners
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); // Subtle box shadow
+
 
       img {
         max-width: 200px;
@@ -29,6 +32,13 @@
         a {
           margin-right: 1rem;
           text-decoration: none;
+          color: $primary-color;
+          font-weight: bold;
+          transition: color 0.3s;
+
+          &:hover {
+            color: lighten($primary-color, 10%);
+          }
         }
       }
 
@@ -40,7 +50,9 @@
     .featuredProjects {
       flex: 1 1 40%;
       padding: 2rem;
-      background-color: rgba($text-color, 0.1);
+      background-color: rgba($text-color, 0.05); // Subtle background color
+      border-radius: 8px; // Rounded corners
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); // Subtle box shadow
 
       .projectCarousel {
         display: flex;
@@ -50,11 +62,11 @@
         .projectItem {
           flex: 0 0 300px;
           margin-right: 1rem;
-          background-color: rgba($text-color, 0.1);
-          border-radius: 8px;
+          background-color: rgba($text-color, 0.1); // Slightly darker background color
+          border-radius: 8px; // Rounded corners
           padding: 2rem;
-          box-shadow: 0 0 10px rgba($text-color, 0.3);
-          transition: transform 0.3s;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); // Subtle box shadow
+          transition: transform 0.3s, box-shadow 0.3s;
           scroll-snap-align: center;
 
           &:last-child {
@@ -63,15 +75,18 @@
 
           &:hover {
             transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba($text-color, 0.8);
           }
 
           img {
             max-width: 100%;
+            border-radius: 5px;
           }
 
           h3 {
             margin: 1rem 0;
             color: $primary-color;
+            text-shadow: 0 0 10px rgba($primary-color, 0.5);
             @include glitch;
           }
 
@@ -82,10 +97,11 @@
             color: #000;
             text-decoration: none;
             border-radius: 4px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, box-shadow 0.3s;
 
             &:hover {
-              background-color: darken($primary-color, 10%);
+              background-color: lighten($primary-color, 10%);
+              box-shadow: 0 0 10px rgba($primary-color, 0.5);
             }
           }
         }
@@ -118,11 +134,34 @@
     display: flex;
     justify-content: space-between;
     padding: 2rem;
-    background-color: rgba($text-color, 0.1);
+    background-color: rgba($text-color, 0.05); // Subtle background color
+    border-radius: 8px; // Rounded corners
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); // Subtle box shadow
 
     .aboutTeaser {
       flex: 1 1 50%;
       margin-right: 2rem;
+      background-color: rgba($text-color, 0.1); // Slightly darker background color
+      border-radius: 8px; // Rounded corners
+      padding: 2rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); // Subtle box shadow
+      transition: transform 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 30px rgba($text-color, 0.8);
+      }
+
+      h2 {
+        color: $primary-color;
+        text-shadow: 0 0 10px rgba($primary-color, 0.5);
+        @include glitch;
+      }
+
+      p {
+        color: $text-color;
+        text-shadow: 0 0 5px rgba($text-color, 0.5);
+      }
     }
 
     .technicalSkills {
@@ -139,13 +178,14 @@
           align-items: center;
           justify-content: center;
           padding: 1.5rem;
-          background-color: rgba($text-color, 0.1);
-          border-radius: 8px;
-          box-shadow: 0 0 10px rgba($text-color, 0.3);
-          transition: transform 0.3s;
+          background-color: rgba($text-color, 0.1); // Slightly darker background color
+          border-radius: 8px; // Rounded corners
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); // Subtle box shadow
+          transition: transform 0.3s, box-shadow 0.3s;
 
           &:hover {
             transform: translateY(-5px);
+            box-shadow: 0 0 30px rgba($text-color, 0.8);
           }
 
           .skillIcon {
@@ -157,11 +197,12 @@
               width: 100%;
               height: 100%;
               fill: $primary-color;
-              transition: fill 0.3s;
+              transition: fill 0.3s, filter 0.3s;
             }
 
             &:hover svg {
-              fill: darken($primary-color, 10%);
+              fill: lighten($primary-color, 10%);
+              filter: drop-shadow(0 0 10px rgba($primary-color, 0.5));
             }
           }
 
@@ -170,6 +211,7 @@
             color: $primary-color;
             font-size: 1.1rem;
             font-weight: bold;
+            text-shadow: 0 0 10px rgba($primary-color, 0.5);
             @include glitch;
           }
         }
@@ -235,11 +277,32 @@
     display: flex;
     justify-content: space-between;
     padding: 2rem;
-    background-color: rgba($text-color, 0.1);
+    background-color: rgba($text-color, 0.05);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 
     .servicesOverview {
       flex: 1 1 50%;
       margin-right: 2rem;
+      background-color: rgba($text-color, 0.1);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 30px rgba($text-color, 0.8);
+      }
+
+      h2 {
+        color: $primary-color;
+        @include glitch;
+      }
+
+      p {
+        color: $text-color;
+      }
     }
 
     .testimonials {
@@ -247,14 +310,28 @@
 
       .testimonialItem {
         margin-bottom: 2rem;
+        background-color: rgba($text-color, 0.1);
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s, box-shadow 0.3s;
+
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 0 30px rgba($text-color, 0.8);
+        }
 
         blockquote {
           font-style: italic;
           margin-bottom: 0.5rem;
+          color: $primary-color;
+          text-shadow: 0 0 10px rgba($primary-color, 0.5);
         }
 
         cite {
           font-weight: bold;
+          color: $primary-color;
+          text-shadow: 0 0 10px rgba($primary-color, 0.5);
         }
       }
     }
