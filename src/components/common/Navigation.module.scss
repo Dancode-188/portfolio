@@ -18,6 +18,11 @@
       font-weight: bold;
       text-decoration: none;
       @include glitch($primary-color);
+      transition: box-shadow 0.3s ease-in-out;
+
+      &:hover {
+        box-shadow: 0 0 10px $primary-color;
+      }
     }
   }
 
@@ -34,11 +39,13 @@
         .menuLink {
           text-decoration: none;
           position: relative;
-          transition: color 0.3s;
+          transition: color 0.3s, box-shadow 0.3s ease-in-out;
           @include glitch;
+          font-weight: 600;
 
           &.active {
             color: $primary-color;
+            font-weight: 700;
 
             &::before {
               content: '';
@@ -53,6 +60,7 @@
 
           &:hover {
             color: $primary-color;
+            box-shadow: 0 0 10px $primary-color;
           }
         }
       }
@@ -64,6 +72,11 @@
     cursor: pointer;
     font-size: 1.5rem;
     @include glitch;
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 0 10px $primary-color; // Add box-shadow on hover
+    }
   }
 }
 
