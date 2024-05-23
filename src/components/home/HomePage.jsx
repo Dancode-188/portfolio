@@ -3,9 +3,17 @@ import axios from 'axios';
 import styles from './HomePage.module.scss';
 import projectThumbnail1 from '../../assets/images/Online-chat-application1.jpg';
 import projectThumbnail2 from '../../assets/images/Simple-clock2.jpg';
-//import updateThumbnail from '../../assets/images/solid_color.jpg';
-import skillIcon1 from '../../assets/images/solid_color.jpg';
-import skillIcon2 from '../../assets/images/solid_color.jpg';
+import { ReactComponent as JavaScriptIcon } from '../../assets/svgs/javascript.svg';
+import { ReactComponent as PythonIcon } from '../../assets/svgs/python.svg';
+import { ReactComponent as JavaIcon } from '../../assets/svgs/java.svg';
+import { ReactComponent as ReactIcon } from '../../assets/svgs/react.svg';
+import { ReactComponent as NodeJSIcon } from '../../assets/svgs/node-js.svg';
+import { ReactComponent as MongoDBIcon } from '../../assets/svgs/mongodb.svg';
+import { ReactComponent as GitIcon } from '../../assets/svgs/git.svg';
+import { ReactComponent as VSCodeIcon } from '../../assets/svgs/visual-studio-code.svg';
+import { ReactComponent as RbuyIcon } from '../../assets/svgs/ruby.svg';
+import { ReactComponent as RailsIcon } from '../../assets/svgs/rails.svg';
+import { ReactComponent as CIcon } from '../../assets/svgs/c++.svg';
 
 const HomePage = () => {
   const [formData, setFormData] = useState({
@@ -105,13 +113,73 @@ const HomePage = () => {
         </div>
         <div className={styles.technicalSkills}>
           <h2>Technical Skills</h2>
-          <div className={styles.skillItem}>
-            <img src={skillIcon1} alt="Skill 1" className={styles.skillIcon} />
-            <span className={styles.skillName}>Skill 1</span>
-          </div>
-          <div className={styles.skillItem}>
-            <img src={skillIcon2} alt="Skill 2" className={styles.skillIcon} />
-            <span className={styles.skillName}>Skill 2</span>
+          <div className={styles.skillsGrid}>
+            <div className={styles.skillItem}>
+              <span className={styles.skillIcon}>
+                <JavaScriptIcon />
+              </span>
+              <span className={styles.skillName}>JavaScript</span>
+            </div>
+            <div className={styles.skillItem}>
+              <span className={styles.skillIcon}>
+                <PythonIcon />
+              </span>
+              <span className={styles.skillName}>Python</span>
+            </div>
+            <div className={styles.skillItem}>
+              <span className={styles.skillIcon}>
+                <JavaIcon />
+              </span>
+              <span className={styles.skillName}>Java</span>
+            </div>
+            <div className={styles.skillItem}>
+              <span className={styles.skillIcon}>
+                <ReactIcon />
+              </span>
+              <span className={styles.skillName}>React</span>
+            </div>
+            <div className={styles.skillItem}>
+              <span className={styles.skillIcon}>
+                <NodeJSIcon />
+              </span>
+              <span className={styles.skillName}>Node.js</span>
+            </div>
+            <div className={styles.skillItem}>
+              <span className={styles.skillIcon}>
+                <MongoDBIcon />
+              </span>
+              <span className={styles.skillName}>MongoDB</span>
+            </div>
+            <div className={styles.skillItem}>
+              <span className={styles.skillIcon}>
+                <RbuyIcon />
+              </span>
+              <span className={styles.skillName}>Ruby</span>
+            </div>
+            <div className={styles.skillItem}>
+              <span className={styles.skillIcon}>
+                <RailsIcon />
+              </span>
+              <span className={styles.skillName}>Rails</span>
+            </div>
+            <div className={styles.skillItem}>
+              <span className={styles.skillIcon}>
+                <CIcon />
+              </span>
+              <span className={styles.skillName}>C++</span>
+            </div>
+            <div className={styles.skillItem}>
+              <span className={styles.skillIcon}>
+                <GitIcon />
+              </span>
+              <span className={styles.skillName}>Git</span>
+            </div>
+            <div className={styles.skillItem}>
+              <span className={styles.skillIcon}>
+                <VSCodeIcon />
+              </span>
+              <span className={styles.skillName}>Visual Studio Code</span>
+            </div>
           </div>
         </div>
       </div>
