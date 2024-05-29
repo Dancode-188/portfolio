@@ -16,8 +16,6 @@ const Footer = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted");
-    console.log("Email:", email);
 
     try {
       const response = await fetch(process.env.REACT_APP_BACKEND_URL_SUBSCRIBE, {
@@ -32,8 +30,9 @@ const Footer = () => {
         setSubscriptionStatus('Successfully subscribed to the newsletter');
         setEmail('');
       } else {
-        console.error('Failed to subscribe to the newsletter');
-        setSubscriptionStatus('Failed to subscribe to the newsletter');
+        const errorData = await response.json();
+        console.error('Failed to subscribe to the newsletter', errorData);
+        setSubscriptionStatus(`Failed to subscribe: ${errorData.error}`);
       }
     } catch (error) {
       console.error('Error subscribing to the newsletter:', error);
