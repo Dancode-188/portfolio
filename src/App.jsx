@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 //import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import Navigation from './components/common/Navigation';
+import EmailVerification from './components/common/EmailVerification';
 
 // Lazy loading route components
 const HomePage = lazy(() => import('./components/home/HomePage'));
@@ -63,6 +64,7 @@ function App() {
               <Route path="/community" element={<CommunityPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/registration-success" element={<RegistrationSuccess />} />
+              <Route path="/verify-email" component={EmailVerification} />
             </Routes>
           </Suspense>
         </ErrorBoundary>
