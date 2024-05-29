@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import styles from './ContactPage.module.scss';
 import { FaComments, FaCalendarAlt } from 'react-icons/fa';
-//import ChatbotComponent from './ChatbotComponent';
+// import ChatbotComponent from './ChatbotComponent';
 import SchedulerComponent from './SchedulerComponent';
 import axios from 'axios';
 
@@ -60,7 +60,11 @@ const ContactPage = () => {
 
     if (validateForm()) {
       try {
-        await axios.post(process.env.REACT_APP_BACKEND_URL_CONTACT, formData);
+        await axios.post('https://danielback.netlify.app/.netlify/functions/contact', formData, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
         setFormSubmitted(true);
         setFormData({
           name: '',
