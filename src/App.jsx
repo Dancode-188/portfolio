@@ -64,7 +64,11 @@ function App() {
               <Route path="/community" element={<CommunityPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/registration-success" element={<RegistrationSuccess />} />
-              <Route path="/verify-email" component={EmailVerification} />
+              <Route path="/verify-email" element={
+                <Suspense fallback={<Loading />}>
+                  <EmailVerification />
+                </Suspense>
+              } />
             </Routes>
           </Suspense>
         </ErrorBoundary>
