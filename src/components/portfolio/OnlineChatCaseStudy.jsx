@@ -22,6 +22,10 @@ const OnlineChatCaseStudy = () => {
     setHoveredFeature(null);
   };
 
+  console.log('Image 1 path:', require('../../assets/images/Online-chat-application1.jpg'));
+  console.log('Image 2 path:', require('../../assets/images/Online-chat-application2.jpg'));
+  console.log('Image 3 path:', require('../../assets/images/Online-chat-application3.jpg'));
+
   return (
     <div ref={scrollRef} onScroll={handleScroll} className={styles.caseStudy}>
       <animated.div style={{ opacity: props.opacity, transform: `translateY(${props.y}px)` }}>
@@ -68,9 +72,9 @@ const OnlineChatCaseStudy = () => {
           <h3 className={`${styles.glitch} ${styles.colorGlitch}`} data-text="Screenshots">
             Screenshots
           </h3>
-          <img src="../../assets/images/Online-chat-application1.jpg" alt="Screenshot 1" className={styles.caseStudyImage} />
-          <img src="../../assets/images/Online-chat-application2.jpg" alt="Screenshot 2" className={styles.caseStudyImage} />
-          <img src="../../assets/images/Online-chat-application3.jpg" alt="Screenshot 3" className={styles.caseStudyImage} />
+          <img src={require('../../assets/images/Online-chat-application1.jpg')} alt="Screenshot 1" className={styles.caseStudyImage} />
+          <img src={require('../../assets/images/Online-chat-application2.jpg')} alt="Screenshot 2" className={styles.caseStudyImage} />
+          <img src={require('../../assets/images/Online-chat-application3.jpg')} alt="Screenshot 3" className={styles.caseStudyImage} />
         </div>
       </animated.div>
     </div>
