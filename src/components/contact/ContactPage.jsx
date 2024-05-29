@@ -97,7 +97,7 @@ const ContactPage = () => {
             )}
             <form onSubmit={handleSubmit}>
               <div className={styles.formGroup}>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">Name:</label>
                 <input
                   type="text"
                   id="name"
@@ -109,7 +109,7 @@ const ContactPage = () => {
                 {formErrors.name && <span className={styles.errorText}>{formErrors.name}</span>}
               </div>
               <div className={styles.formGroup}>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">Email:</label>
                 <input
                   type="email"
                   id="email"
@@ -121,7 +121,7 @@ const ContactPage = () => {
                 {formErrors.email && <span className={styles.errorText}>{formErrors.email}</span>}
               </div>
               <div className={styles.formGroup}>
-                <label htmlFor="message">Message</label>
+                <label htmlFor="message">Message:</label>
                 <textarea
                   id="message"
                   name="message"
