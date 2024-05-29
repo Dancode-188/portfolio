@@ -15,6 +15,12 @@ import { ReactComponent as VSCodeIcon } from '../../assets/svgs/visual-studio-co
 import { ReactComponent as RbuyIcon } from '../../assets/svgs/ruby.svg';
 import { ReactComponent as RailsIcon } from '../../assets/svgs/rails.svg';
 import { ReactComponent as CIcon } from '../../assets/svgs/c++.svg';
+import { ReactComponent as FullStackDevelopmentIcon } from '../../assets/svgs/full-stack-development.svg';
+import { ReactComponent as BackendDevelopmentIcon } from '../../assets/svgs/backend-development.svg';
+import { ReactComponent as AlgorithmDesignIcon } from '../../assets/svgs/algorithm-design.svg';
+import { ReactComponent as DatabaseDesignIcon } from '../../assets/svgs/database-design.svg';
+import { ReactComponent as ProjectManagementIcon } from '../../assets/svgs/project-management.svg';
+import { ReactComponent as PCBDesignIcon } from '../../assets/svgs/pcb-design.svg';
 
 const HomePage = () => {
   const [formData, setFormData] = useState({
@@ -188,16 +194,54 @@ const HomePage = () => {
 
       {/* Services Overview and Testimonials */}
       <div className={styles.servicesAndTestimonials}>
+        {/* Services Overview */}
         <div className={styles.servicesOverview}>
-        <h2>Services</h2>
-          <ul>
-            <li>Web Development: I offer professional web development services, specializing in creating responsive and user-friendly websites using modern technologies such as React, Node.js, and MongoDB.</li>
-            <li>Data Analysis and Visualization: With expertise in Python and data visualization libraries like Matplotlib and Seaborn, I can help you transform your data into insightful visualizations and actionable insights.</li>
-            <li>Software Engineering: From designing and implementing robust software applications to optimizing existing codebases, I provide comprehensive software engineering services tailored to your specific needs.</li>
-            <li>Technical Writing and Documentation: Clear and concise documentation is essential for any project. I can help you create well-structured technical documents, user guides, and API references.</li>
-            <li>Tutoring and Mentoring: If you're looking to enhance your coding skills or seeking guidance on a specific topic, I offer personalized tutoring and mentoring services to help you achieve your learning goals.</li>
-          </ul>
-          <a href="/services">Learn More</a>
+          <h2>Services</h2>
+          <div className={styles.serviceGrid}>
+            <div className={styles.serviceItem}>
+              <div className={styles.serviceIcon}>
+                <FullStackDevelopmentIcon />
+              </div>
+              <h3>Full-Stack Development</h3>
+              <p>Building end-to-end web applications using Node.js, Express.js, React.js, and MongoDB.</p>
+            </div>
+            <div className={styles.serviceItem}>
+              <div className={styles.serviceIcon}>
+                <BackendDevelopmentIcon />
+              </div>
+              <h3>Backend Development</h3>
+              <p>Developing robust and scalable server-side solutions using Java, Python, Ruby on Rails, and relational databases.</p>
+            </div>
+            <div className={styles.serviceItem}>
+              <div className={styles.serviceIcon}>
+                <AlgorithmDesignIcon />
+              </div>
+              <h3>Algorithm Design</h3>
+              <p>Creating efficient and optimized algorithms using data structures and algorithmic techniques in C++, Java, and Python.</p>
+            </div>
+            <div className={styles.serviceItem}>
+              <div className={styles.serviceIcon}>
+                <DatabaseDesignIcon />
+              </div>
+              <h3>Database Design</h3>
+              <p>Designing and implementing relational and NoSQL databases using SQL, DBMS, and MongoDB.</p>
+            </div>
+            <div className={styles.serviceItem}>
+              <div className={styles.serviceIcon}>
+                <ProjectManagementIcon />
+              </div>
+              <h3>Project Management</h3>
+              <p>Overseeing software development projects from inception to delivery, ensuring timely and successful completion.</p>
+            </div>
+            <div className={styles.serviceItem}>
+              <div className={styles.serviceIcon}>
+                <PCBDesignIcon />
+              </div>
+              <h3>PCB Design</h3>
+              <p>Designing and developing printed circuit boards (PCBs) for electronic projects.</p>
+            </div>
+          </div>
+          <a href="/services" className={styles.servicesLink}>Explore Services</a>
         </div>
         <div className={styles.testimonials}>
           <h2>Testimonials</h2>
@@ -224,7 +268,7 @@ const HomePage = () => {
         )}
         <form onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Name:</label>
             <input
               type="text"
               id="name"
@@ -236,7 +280,7 @@ const HomePage = () => {
             {formErrors.name && <span className={styles.errorText}>{formErrors.name}</span>}
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email:</label>
             <input
               type="email"
               id="email"
@@ -248,7 +292,7 @@ const HomePage = () => {
             {formErrors.email && <span className={styles.errorText}>{formErrors.email}</span>}
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">Message:</label>
             <textarea
               id="message"
               name="message"
