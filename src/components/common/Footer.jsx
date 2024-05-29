@@ -8,10 +8,15 @@ import { SOCIAL_LINKS } from '../../utils/constants';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState('');
   const [subscriptionStatus, setSubscriptionStatus] = useState('');
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+  };
+
+  const handleFirstNameChange = (e) => {
+    setFirstName(e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -23,12 +28,13 @@ const Footer = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, firstName }),
       });
 
       if (response.ok) {
         setSubscriptionStatus('Successfully subscribed to the newsletter');
         setEmail('');
+        setFirstName('');
       } else {
         const errorData = await response.json();
         console.error('Failed to subscribe to the newsletter', errorData);
@@ -119,6 +125,13 @@ const Footer = () => {
             </span>
           </h3>
           <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Enter your first name"
+              value={firstName}
+              onChange={handleFirstNameChange}
+              required
+            />
             <input
               type="email"
               placeholder="Enter your email"
