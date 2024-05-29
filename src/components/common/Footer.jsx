@@ -32,7 +32,7 @@ const Footer = () => {
       });
 
       if (response.ok) {
-        setSubscriptionStatus('Successfully subscribed to the newsletter');
+        setSubscriptionStatus('Thank you for subscribing! Please check your email to verify your subscription.');
         setEmail('');
         setFirstName('');
       } else {
