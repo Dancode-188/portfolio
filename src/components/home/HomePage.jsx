@@ -3,6 +3,7 @@ import axios from 'axios';
 import styles from './HomePage.module.scss';
 import projectThumbnail1 from '../../assets/images/Online-chat-application1.jpg';
 import projectThumbnail2 from '../../assets/images/Simple-clock2.jpg';
+import Header from '../../components/common/Header';
 import { ReactComponent as JavaScriptIcon } from '../../assets/svgs/javascript.svg';
 import { ReactComponent as PythonIcon } from '../../assets/svgs/python.svg';
 import { ReactComponent as JavaIcon } from '../../assets/svgs/java.svg';
@@ -80,6 +81,7 @@ const HomePage = () => {
 
   return (
     <div className={styles.homePage}>
+      <Header />
       {/* Diagonal Split Layout */}
       <div className={styles.diagonalSplit}>
         <div className={styles.heroSection}></div>

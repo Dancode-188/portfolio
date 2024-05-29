@@ -1,7 +1,7 @@
 // src/App.jsx
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/common/Header';
+//import Header from './components/common/Header';
 import Footer from './components/common/Footer';
 import Navigation from './components/common/Navigation';
 
@@ -50,7 +50,6 @@ function App() {
     <Router>
       <div className="App">
         <Navigation />
-        <Header />
         <ErrorBoundary>
           <Suspense fallback={<Loading />}>
             <Routes>
