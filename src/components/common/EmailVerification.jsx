@@ -1,5 +1,3 @@
-// src/components/common/EmailVerification.jsx
-
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styles from './EmailVerification.module.scss';
@@ -15,7 +13,12 @@ const EmailVerification = () => {
 
     const verifyEmail = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL_VERIFY_EMAIL}?token=${token}`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL_VERIFY_EMAIL}?token=${token}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
 
         if (response.ok) {
           setVerificationStatus('Email verified successfully!');
