@@ -3,4 +3,4 @@
 /services   /index.html   200
 /portfolio  /index.html   200
 /contact    /index.html   200
-/verify-email    /index.html   200
+/verify-email/:token    /index.html   200
