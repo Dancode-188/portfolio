@@ -1,5 +1,7 @@
 // src/components/EmailVerification.module.scss
 
+@import '../styles/mixins';
+
 .emailVerification {
     max-width: 600px;
     margin: 0 auto;
@@ -10,24 +12,25 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     h2 {
-      font-size: 28px;
-      margin-bottom: 20px;
-      color: #333;
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #333;
+        @include textGlitch; // Apply text glitch effect
     }
 
     p {
-      font-size: 18px;
-      margin-bottom: 10px;
-      color: #666;
-    }
-
-    .success {
-      color: #28a745;
-      font-weight: bold;
-    }
-
-    .error {
-      color: #dc3545;
-      font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #666;
+        &.success {
+            color: #28a745;
+            font-weight: bold;
+            @include colorGlitch; // Apply color glitch effect
+        }
+        &.error {
+            color: #dc3545;
+            font-weight: bold;
+            @include glitch($error-color); // Apply glitch effect with error color
+        }
     }
 }
