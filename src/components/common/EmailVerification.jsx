@@ -11,7 +11,7 @@ const EmailVerification = () => {
   useEffect(() => {
     const verifyEmail = async () => {
       try {
-        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL_VERIFY_EMAIL}/verify`, { token });
+        const response = await axios.post('https://danielback.netlify.app/.netlify/functions/verify-email/verify', { token });
         setVerificationStatus(response.data.message);
         setIsSuccess(true);
       } catch (error) {
