@@ -1,4 +1,3 @@
-// src/components/common/EmailVerification.jsx
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -12,8 +11,8 @@ const EmailVerification = () => {
   useEffect(() => {
     const verifyEmail = async () => {
       try {
-        await axios.post(`${process.env.REACT_APP_BACKEND_URL_VERIFY_EMAIL}`, { token });
-        setVerificationStatus('Email verified successfully!');
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL_VERIFY_EMAIL}/verify`, { token });
+        setVerificationStatus(response.data.message);
         setIsSuccess(true);
       } catch (error) {
         console.error('Error verifying email:', error);
