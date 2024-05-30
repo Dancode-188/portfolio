@@ -1,4 +1,4 @@
-// src/components/EmailVerification.jsx
+// src/components/common/EmailVerification.jsx
 
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
