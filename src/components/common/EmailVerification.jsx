@@ -13,12 +13,17 @@ const EmailVerification = () => {
 
     const verifyEmail = async () => {
       try {
+        console.log('Verifying email with token:', token);
+        console.log('Backend URL:', process.env.REACT_APP_BACKEND_URL_VERIFY_EMAIL);
+
         const response = await fetch(`${process.env.REACT_APP_BACKEND_URL_VERIFY_EMAIL}?token=${token}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
           }
         });
+
+        console.log('Response:', response);
 
         if (response.ok) {
           setVerificationStatus('Email verified successfully!');
