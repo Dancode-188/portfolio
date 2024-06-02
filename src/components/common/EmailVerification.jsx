@@ -2,8 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import styles from './EmailVerification.module.scss';
+import ReactGA from 'react-ga';
 
 const EmailVerification = () => {
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   const { token } = useParams();
   const [verificationStatus, setVerificationStatus] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);

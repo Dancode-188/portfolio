@@ -1,9 +1,15 @@
 // src/components/about/AboutPage.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './AboutPage.module.scss';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import ReactGA from 'react-ga';
 
 const AboutPage = () => {
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const milestones = [

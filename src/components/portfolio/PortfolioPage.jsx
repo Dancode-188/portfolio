@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProjectTimeline from './ProjectTimeline';
 import ProjectACaseStudy from './ProjectACaseStudy';
 import SimpleClockCaseStudy from './SimpleClockCaseStudy';
 import OnlineChatCaseStudy from './OnlineChatCaseStudy';
 import styles from './PortfolioPage.module.scss';
+import ReactGA from 'react-ga';
 
 const FallbackCaseStudy = () => {
   return <div>Fallback Case Study</div>;
 };
 
 const PortfolioPage = () => {
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   const projects = [
     {
       title: 'Project A',

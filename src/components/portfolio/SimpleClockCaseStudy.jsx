@@ -1,8 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import ReactGA from 'react-ga';
 import { useSpring, animated } from 'react-spring';
 import styles from './PortfolioPage.module.scss';
 
 const SimpleClockCaseStudy = () => {
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   const scrollRef = useRef(null);
   const [props, set] = useSpring(() => ({ opacity: 1, y: 100 }));
   const [hoveredFeature, setHoveredFeature] = useState(null);

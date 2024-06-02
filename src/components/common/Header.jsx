@@ -1,10 +1,16 @@
 // Header.jsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
 import styles from './Header.module.scss';
+import ReactGA from 'react-ga';
 
 const Header = () => {
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   return (
     <header className={styles.header}>
       <div className={styles.headerContent}>

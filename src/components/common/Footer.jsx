@@ -1,11 +1,17 @@
 // src/components/common/Footer.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import { SOCIAL_LINKS } from '../../utils/constants';
+import ReactGA from 'react-ga';
 
 const Footer = () => {
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');

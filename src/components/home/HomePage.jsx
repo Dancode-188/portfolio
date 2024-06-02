@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ReactGA from 'react-ga';
 import styles from './HomePage.module.scss';
 import projectThumbnail1 from '../../assets/images/Online-chat-application1.jpg';
 import projectThumbnail2 from '../../assets/images/Simple-clock2.jpg';
@@ -23,6 +24,11 @@ import { ReactComponent as ProjectManagementIcon } from '../../assets/svgs/proje
 import { ReactComponent as PCBDesignIcon } from '../../assets/svgs/pcb-design.svg';
 
 const HomePage = () => {
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',

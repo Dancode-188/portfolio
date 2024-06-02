@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import ReactGA from 'react-ga';
 import ProjectAIllustration from './ProjectAIllustration';
 import ProjectBIllustration from './ProjectBIllustration';
 import OnlineChatIllustration from './OnlineChatIllustration';
 import styles from './PortfolioPage.module.scss'; // Import the SCSS module
 
 const ProjectTimeline = ({ projects, onProjectClick }) => {
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   return (
     <div className={styles.timelineContainer}>
       <h2>Project Timeline</h2>

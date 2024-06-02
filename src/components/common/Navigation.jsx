@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Navigation.module.scss';
 import { NAV_LINKS } from '../../utils/constants';
+import ReactGA from 'react-ga';
 
 const Navigation = () => {
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   const [isActive, setIsActive] = useState(false);
   const location = useLocation();
 

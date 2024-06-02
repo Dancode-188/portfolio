@@ -1,13 +1,19 @@
 // src/components/contact/ContactPage.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './ContactPage.module.scss';
 import { FaComments, FaCalendarAlt } from 'react-icons/fa';
 // import ChatbotComponent from './ChatbotComponent';
 import SchedulerComponent from './SchedulerComponent';
 import axios from 'axios';
+import ReactGA from 'react-ga';
 
 const ContactPage = () => {
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   const [selectedOption, setSelectedOption] = useState('contact-form');
   const [formData, setFormData] = useState({
     name: '',

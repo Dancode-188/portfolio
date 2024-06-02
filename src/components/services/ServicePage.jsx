@@ -2,6 +2,7 @@
 // eslint-disable-next-line
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import ReactGA from 'react-ga';
 import styles from './ServicePage.module.scss';
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
 import Slider from 'rc-slider';
@@ -13,6 +14,11 @@ import { Spinner } from 'react-bootstrap';
 const COLORS = ['#00FF7F', '#4B0082', '#ADD8E6', '#FF00FF'];
 
 const ServicePage = () => {
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   const [projectType, setProjectType] = useState('');
   const [budget, setBudget] = useState('');
   const [timeline, setTimeline] = useState('');
