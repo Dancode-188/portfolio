@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import Navigation from './components/common/Navigation';
 import Footer from './components/common/Footer';
@@ -21,16 +21,21 @@ const RegistrationSuccess = lazy(() => import('./components/register/Registratio
 const Loading = () => <div>Loading...</div>;
 
 function App() {
-  const location = useLocation();
 
   useEffect(() => {
     ReactGA.initialize('G-32ZNB2RDKF');
     ReactGA.pageview(window.location.pathname + window.location.search);
-  }, []);
 
-  useEffect(() => {
-    ReactGA.pageview(location.pathname + location.search);
-  }, [location]);
+    const onLocationChange = () => {
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    };
+
+    window.addEventListener('popstate', onLocationChange);
+
+    return () => {
+      window.removeEventListener('popstate', onLocationChange);
+    };
+  }, []);
 
   return (
     <Router>
