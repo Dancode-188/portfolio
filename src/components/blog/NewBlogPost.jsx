@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './NewBlogPost.scss';
 
 const NewBlogPost = () => {
   const [title, setTitle] = useState('');
@@ -36,17 +37,20 @@ const NewBlogPost = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Title:</label>
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
-      </div>
-      <div>
-        <label>Content:</label>
-        <textarea value={content} onChange={(e) => setContent(e.target.value)} required></textarea>
-      </div>
-      <button type="submit">Create Blog Post</button>
-    </form>
+    <div className="new-blog-post">
+      <h2>Create New Blog Post</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="title">Title:</label>
+          <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="content">Content:</label>
+          <textarea id="content" value={content} onChange={(e) => setContent(e.target.value)} required></textarea>
+        </div>
+        <button type="submit" className="btn-submit">Create Blog Post</button>
+      </form>
+    </div>
   );
 };
 

@@ -1,0 +1,67 @@
+@import "../styles/mixins";
+
+.new-blog-post {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #000;
+  color: $text-color;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: $primary-color;
+    @include glitch;
+  }
+
+  form {
+    .form-group {
+      margin-bottom: 1.5rem;
+
+      label {
+        display: block;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: $secondary-color;
+      }
+
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 1rem;
+        border: none;
+        background-color: rgba($text-color, 0.1);
+        color: $text-color;
+        border-radius: 4px;
+        transition: box-shadow 0.3s;
+
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 5px rgba($primary-color, 0.8);
+        }
+      }
+
+      textarea {
+        min-height: 200px;
+        resize: vertical;
+      }
+    }
+
+    .btn-submit {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      font-size: 1.1rem;
+      background-color: $primary-color;
+      color: #000;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+}
