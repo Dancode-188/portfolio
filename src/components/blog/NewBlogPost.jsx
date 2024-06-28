@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { EditorState, convertToRaw } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './NewBlogPost.scss';
 
 const NewBlogPost = () => {
   const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState(EditorState.createEmpty());
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
@@ -24,16 +27,17 @@ const NewBlogPost = () => {
     };
 
     try {
-      const response = await axios.post('https://danielback.netlify.app/.netlify/functions/blogPost', { title, content, author: 'Your Name' }, config);
+      const contentRaw = JSON.stringify(convertToRaw(content.getCurrentContent()));
+      const response = await axios.post('https://danielback.netlify.app/.netlify/functions/blogPost', { title, content: contentRaw, author: 'Your Name' }, config);
       console.log('Blog post created:', response.data);
-      navigate('/'); // Redirect to homepage or another page after submission
+      navigate('/');
     } catch (error) {
       console.error('Error creating blog post:', error);
     }
   };
 
   if (!isAuthenticated) {
-    return null; // Do not render the form if not authenticated
+    return null;
   }
 
   return (
@@ -46,7 +50,33 @@ const NewBlogPost = () => {
         </div>
         <div className="form-group">
           <label htmlFor="content">Content:</label>
-          <textarea id="content" value={content} onChange={(e) => setContent(e.target.value)} required></textarea>
+          <Editor
+            editorState={content}
+            onEditorStateChange={setContent}
+            toolbar={{
+              options: ['inline', 'blockType', 'colorPicker', 'list', 'textAlign', 'history'],
+              inline: {
+                inDropdown: false,
+                options: ['bold', 'italic', 'underline', 'strikethrough'],
+                bold: { className: 'custom-inline-option' },
+                italic: { className: 'custom-inline-option' },
+                underline: { className: 'custom-inline-option' },
+                strikethrough: { className: 'custom-inline-option' },
+              },
+              colorPicker: {
+                className: 'custom-color-picker',
+                component: ({ onChange }) => (
+                  <input
+                    type="color"
+                    className="custom-color-picker"
+                    onChange={(e) => {
+                      onChange(e);
+                    }}
+                  />
+                ),
+              },
+            }}
+          />
         </div>
         <button type="submit" className="btn-submit">Create Blog Post</button>
       </form>

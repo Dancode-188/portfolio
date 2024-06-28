@@ -1,4 +1,5 @@
 @import "../styles/mixins";
+@import "~react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 .new-blog-post {
   display: flex;
@@ -37,8 +38,7 @@
         color: $secondary-color;
       }
 
-      input[type="text"],
-      textarea {
+      input[type="text"] {
         width: 95%;
         padding: 0.8rem;
         font-size: 1rem;
@@ -54,9 +54,103 @@
         }
       }
 
-      textarea {
-        min-height: 200px;
-        resize: vertical;
+      .rdw-editor-wrapper {
+        border: 1px solid rgba($text-color, 0.1);
+        border-radius: 4px;
+        padding: 10px;
+        background-color: rgba($text-color, 0.1);
+
+        .rdw-editor-main {
+          min-height: 200px;
+          padding: 0.8rem;
+          font-size: 1rem;
+          color: $text-color;
+          resize: vertical;
+        }
+
+        .rdw-editor-toolbar {
+          border: none;
+          background-color: rgba(255, 255, 255, 0.1);
+          border-radius: 4px;
+          margin-bottom: 10px;
+
+          .rdw-option-wrapper {
+            border: none;
+            background-color: transparent;
+
+            &:hover {
+              background-color: rgba($primary-color, 0.1);
+            }
+
+            .rdw-dropdown-wrapper {
+              background-color: transparent;
+
+              &:hover {
+                background-color: rgba($primary-color, 0.1);
+              }
+
+              .rdw-dropdown-selectedtext {
+                color: $text-color;
+              }
+
+              .rdw-dropdown-carettoopen {
+                border-top-color: $text-color;
+              }
+
+              .custom-dropdown {
+                color: $text-color;
+                background-color: #1c1c1c;
+                border: 1px solid rgba($text-color, 0.1);
+                border-radius: 4px;
+                padding: 5px;
+                margin-right: 5px;
+
+                option {
+                  background-color: #1c1c1c;
+                  color: $text-color;
+                }
+
+                &:focus {
+                  outline: none;
+                  box-shadow: 0 0 5px rgba($primary-color, 0.8);
+                }
+              }
+            }
+
+            .rdw-colorpicker-wrapper {
+              .rdw-colorpicker-modal {
+                background-color: rgba(255, 255, 255, 0.1);
+
+                .rdw-colorpicker-cube {
+                  width: 20px;
+                  height: 20px;
+                  border: none;
+                  margin: 3px;
+
+                  &:hover {
+                    border: 2px solid $primary-color;
+                  }
+                }
+
+                .custom-color-picker {
+                  width: 100%;
+                  padding: 5px;
+                  font-size: 1rem;
+                  border: 1px solid rgba($text-color, 0.1);
+                  background-color: rgba($text-color, 0.1);
+                  color: $text-color;
+                  border-radius: 4px;
+                  transition: box-shadow 0.3s;
+
+                  &:focus {
+                    outline: none;
+                    box-shadow: 0 0 5px rgba($primary-color, 0.8);
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
 
