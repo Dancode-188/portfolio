@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { EditorState, convertToRaw } from 'draft-js';
+import { EditorState, convertToRaw, Modifier, AtomicBlockUtils } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './NewBlogPost.scss';
@@ -10,6 +10,10 @@ const NewBlogPost = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState(EditorState.createEmpty());
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [showLinkInput, setShowLinkInput] = useState(false);
+  const [linkUrl, setLinkUrl] = useState('');
+  const [showImageInput, setShowImageInput] = useState(false);
+  const linkInputRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,9 +40,67 @@ const NewBlogPost = () => {
     }
   };
 
+  const handleLinkClick = () => {
+    setShowLinkInput(true);
+    setTimeout(() => {
+      linkInputRef.current.focus();
+    }, 0);
+  };
+
+  const handleLinkInputChange = (evt) => {
+    setLinkUrl(evt.target.value);
+  };
+
+  const handleLinkInputBlur = () => {
+    setShowLinkInput(false);
+    if (linkUrl) {
+      const contentState = content.getCurrentContent();
+      const contentStateWithLink = contentState.createEntity('LINK', 'MUTABLE', { url: linkUrl });
+      const entityKey = contentStateWithLink.getLastCreatedEntityKey();
+      const newEditorState = EditorState.set(content, { currentContent: contentStateWithLink });
+      const newContentState = Modifier.applyEntity(
+        newEditorState.getCurrentContent(),
+        newEditorState.getSelection(),
+        entityKey
+      );
+      const finalEditorState = EditorState.push(newEditorState, newContentState, 'apply-entity');
+      setContent(finalEditorState);
+      setLinkUrl('');
+    }
+  };
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (event) => {
+      const contentState = content.getCurrentContent();
+      const contentStateWithImage = contentState.createEntity('IMAGE', 'IMMUTABLE', { src: event.target.result });
+      const entityKey = contentStateWithImage.getLastCreatedEntityKey();
+      const newEditorState = AtomicBlockUtils.insertAtomicBlock(content, entityKey, ' ');
+      setContent(newEditorState);
+    };
+
+    reader.readAsDataURL(file);
+  };
+
   if (!isAuthenticated) {
     return null;
   }
+
+  const handlePastedText = (text, html, editorState) => {
+    if (html) {
+      const contentState = Modifier.insertText(
+        editorState.getCurrentContent(),
+        editorState.getSelection(),
+        html
+      );
+      const newEditorState = EditorState.push(editorState, contentState, 'insert-fragment');
+      setContent(newEditorState);
+      return 'handled';
+    }
+    return 'not-handled';
+  };
 
   return (
     <div className="new-blog-post">
@@ -46,38 +108,75 @@ const NewBlogPost = () => {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="title">Title:</label>
-          <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} required />
+          <input
+            type="text"
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
         </div>
         <div className="form-group">
           <label htmlFor="content">Content:</label>
           <Editor
             editorState={content}
             onEditorStateChange={setContent}
+            handlePastedText={handlePastedText}
+            blockRendererFn={(block) => {
+              if (block.getType() === 'atomic') {
+                const entityKey = block.getEntityAt(0);
+                const contentState = content.getCurrentContent();
+                const entity = contentState.getEntity(entityKey);
+                const type = entity.getType();
+                if (type === 'IMAGE') {
+                  const { src } = entity.getData();
+                  return {
+                    component: (props) => <img src={src} alt="Uploaded" />,
+                    editable: false,
+                  };
+                }
+              }
+              return null;
+            }}
             toolbar={{
-              options: ['inline', 'blockType', 'colorPicker', 'list', 'textAlign', 'history'],
+              options: ['inline', 'blockType', 'link', 'colorPicker', 'list', 'textAlign', 'history'],
               inline: {
                 inDropdown: false,
                 options: ['bold', 'italic', 'underline', 'strikethrough'],
-                bold: { className: 'custom-inline-option' },
-                italic: { className: 'custom-inline-option' },
-                underline: { className: 'custom-inline-option' },
-                strikethrough: { className: 'custom-inline-option' },
               },
-              colorPicker: {
-                className: 'custom-color-picker',
-                component: ({ onChange }) => (
-                  <input
-                    type="color"
-                    className="custom-color-picker"
-                    onChange={(e) => {
-                      onChange(e);
-                    }}
-                  />
-                ),
+              link: {
+                inDropdown: false,
+                options: ['link', 'unlink'],
+                defaultTargetOption: '_blank',
+                inputPlaceholder: 'Enter URL',
+                showOpenOptionOnHover: true,
+                linkCallback: {
+                  showOpenOptionOnHover: true,
+                  defaultTargetOption: '_blank',
+                },
               },
             }}
           />
         </div>
+        <button type="button" onClick={handleLinkClick}>Add Link</button>
+        {showLinkInput && (
+          <div>
+            <input
+              type="text"
+              ref={linkInputRef}
+              value={linkUrl}
+              onChange={handleLinkInputChange}
+              onBlur={handleLinkInputBlur}
+              placeholder="Enter link URL"
+            />
+          </div>
+        )}
+        <button type="button" onClick={() => setShowImageInput(true)}>Add Image</button>
+        {showImageInput && (
+          <div>
+            <input type="file" accept="image/*" onChange={handleImageUpload} />
+          </div>
+        )}
         <button type="submit" className="btn-submit">Create Blog Post</button>
       </form>
     </div>
