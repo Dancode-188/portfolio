@@ -39,6 +39,10 @@ export const NAV_LINKS = [
     name: "Contact",
     url: "/contact",
   },
+  {
+    name: "Blog",
+    url: "/blog",
+  },
 ];
 
 export const SKILLS = [

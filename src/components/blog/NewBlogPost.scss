@@ -1,0 +1,224 @@
+@import "../styles/mixins";
+@import "~draft-js/dist/Draft.css";
+@import "~draft-js-anchor-plugin/lib/plugin.css";
+
+.new-blog-post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #000;
+  color: $text-color;
+  min-height: 100vh;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: $primary-color;
+    @include glitch;
+  }
+
+  form {
+    background-color: #1c1c1c;
+    border-radius: 8px;
+    padding: 20px;
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 255, 127, 0.3);
+    transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s ease-out;
+
+    .form-group {
+      margin-bottom: 1.5rem;
+
+      label {
+        display: block;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: $secondary-color;
+      }
+
+      input[type="text"] {
+        width: 95%;
+        padding: 0.8rem;
+        font-size: 1rem;
+        border: none;
+        background-color: rgba($text-color, 0.1);
+        color: $text-color;
+        border-radius: 4px;
+        transition: box-shadow 0.3s;
+
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 5px rgba($primary-color, 0.8);
+        }
+      }
+
+      .rdw-editor-wrapper {
+        border: 1px solid rgba($text-color, 0.1);
+        border-radius: 4px;
+        padding: 10px;
+        background-color: rgba($text-color, 0.1);
+
+        .rdw-editor-main {
+          min-height: 200px;
+          padding: 0.8rem;
+          font-size: 1rem;
+          color: $text-color;
+          resize: vertical;
+
+          img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+          }
+        }
+
+        .rdw-editor-toolbar {
+          border: none;
+          background-color: rgba(255, 255, 255, 0.1);
+          border-radius: 4px;
+          margin-bottom: 10px;
+
+          .rdw-option-wrapper {
+            border: none;
+            background-color: transparent;
+
+            &:hover {
+              background-color: rgba($primary-color, 0.1);
+            }
+
+            .rdw-dropdown-wrapper {
+              background-color: transparent;
+
+              &:hover {
+                background-color: rgba($primary-color, 0.1);
+              }
+
+              .rdw-dropdown-selectedtext {
+                color: $text-color;
+              }
+
+              .rdw-dropdown-carettoopen {
+                border-top-color: $text-color;
+              }
+
+              .custom-dropdown {
+                color: $text-color;
+                background-color: #1c1c1c;
+                border: 1px solid rgba($text-color, 0.1);
+                border-radius: 4px;
+                padding: 5px;
+                margin-right: 5px;
+
+                option {
+                  background-color: #1c1c1c;
+                  color: $text-color;
+                }
+
+                &:focus {
+                  outline: none;
+                  box-shadow: 0 0 5px rgba($primary-color, 0.8);
+                }
+              }
+            }
+
+            .rdw-colorpicker-wrapper {
+              .rdw-colorpicker-modal {
+                background-color: rgba(255, 255, 255, 0.1);
+
+                .rdw-colorpicker-cube {
+                  width: 20px;
+                  height: 20px;
+                  border: none;
+                  margin: 3px;
+
+                  &:hover {
+                    border: 2px solid $primary-color;
+                  }
+                }
+
+                .custom-color-picker {
+                  width: 100%;
+                  padding: 5px;
+                  font-size: 1rem;
+                  border: 1px solid rgba($text-color, 0.1);
+                  background-color: rgba($text-color, 0.1);
+                  color: $text-color;
+                  border-radius: 4px;
+                  transition: box-shadow 0.3s;
+
+                  &:focus {
+                    outline: none;
+                    box-shadow: 0 0 5px rgba($primary-color, 0.8);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .btn-submit {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      font-size: 1.1rem;
+      background-color: $primary-color;
+      color: #000;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+
+    .link-input-container {
+      margin-top: 1.5rem;
+
+      input[type="text"] {
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 1rem;
+        border: 1px solid rgba($text-color, 0.1);
+        background-color: rgba($text-color, 0.1);
+        color: $text-color;
+        border-radius: 4px;
+        transition: box-shadow 0.3s;
+
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 5px rgba($primary-color, 0.8);
+        }
+      }
+    }
+
+    .image-input-container {
+      margin-top: 1.5rem;
+
+      input[type="file"] {
+        display: none;
+      }
+
+      .image-upload-button {
+        display: inline-block;
+        padding: 0.8rem 1.5rem;
+        font-size: 1.1rem;
+        background-color: $secondary-color;
+        color: #000;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: darken($secondary-color, 10%);
+        }
+      }
+    }
+  }
+}

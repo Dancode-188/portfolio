@@ -1,0 +1,78 @@
+@import "./styles/mixins";
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #000;
+    color: $text-color;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: $primary-color;
+    @include glitch;
+  }
+
+  form {
+    background-color: #1c1c1c;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 255, 127, 0.3);
+    transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s ease-out;
+
+    &:hover {
+        opacity: 1;
+        transform: translateY(-5px);
+        box-shadow: 0 0 30px rgba($text-color, 0.8);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+
+      label {
+        display: block;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        color: $secondary-color;
+      }
+
+      input[type="email"],
+      input[type="password"] {
+        width: 95%;
+        padding: 0.8rem;
+        font-size: 1rem;
+        border: none;
+        background-color: rgba($text-color, 0.1);
+        color: $text-color;
+        border-radius: 4px;
+        transition: box-shadow 0.3s;
+
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 5px rgba($primary-color, 0.8);
+        }
+      }
+    }
+
+    .btn-submit {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      font-size: 1.1rem;
+      background-color: $primary-color;
+      color: #000;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+}

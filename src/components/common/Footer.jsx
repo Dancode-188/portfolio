@@ -105,6 +105,13 @@ const Footer = () => {
                   </span>
                 </Link>
               </li>
+              <li>
+                <Link to="/blog">
+                  <span className={styles.glitch} data-text="Blog">
+                    Blog
+                  </span>
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>

@@ -4,6 +4,8 @@ import ReactGA from 'react-ga';
 import Navigation from './components/common/Navigation';
 import Footer from './components/common/Footer';
 import EmailVerification from './components/common/EmailVerification';
+import Login from './components/Login';
+import NewBlogPost from './components/blog/NewBlogPost';
 
 
 // Lazy loading route components
@@ -54,6 +56,8 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/registration-success" element={<RegistrationSuccess />} />
             <Route path="/verify-email/:token" element={<EmailVerification />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/new-blog-post" element={<NewBlogPost />} /> {/* Private Route */}
           </Routes>
         </Suspense>
         <Footer />
