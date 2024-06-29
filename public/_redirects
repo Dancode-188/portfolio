@@ -4,3 +4,5 @@
 /portfolio  /index.html   200
 /contact    /index.html   200
 /verify-email/:token    /index.html   200
+/login    /index.html   200
+/new-blog-post    /index.html   200
