@@ -10,8 +10,10 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Form submitted', { email, password }); // Add this line
     try {
       const response = await axios.post('https://danielback.netlify.app/.netlify/functions/auth/login', { email, password });
+      console.log('Response received', response); // Add this line
       localStorage.setItem('token', response.data.token);
       navigate('/new-blog-post'); // Redirect to new blog post form
     } catch (error) {
