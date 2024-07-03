@@ -66,7 +66,7 @@ const ContactPage = () => {
 
     if (validateForm()) {
       try {
-        await axios.post('https://danielback.netlify.app/.netlify/functions/contact', formData, {
+        await axios.post('https://danielback-cc3b9627b533.herokuapp.com/contact', formData, {
           headers: {
             'Content-Type': 'application/json',
           },

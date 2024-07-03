@@ -32,7 +32,7 @@ const NewBlogPost = () => {
 
     try {
       const contentRaw = JSON.stringify(convertToRaw(content.getCurrentContent()));
-      const response = await axios.post('https://danielback.netlify.app/.netlify/functions/blogPost', { title, content: contentRaw, author: 'Your Name' }, config);
+      const response = await axios.post('https://danielback-cc3b9627b533.herokuapp.com/blogPost', { title, content: contentRaw, author: 'Your Name' }, config);
       console.log('Blog post created:', response.data);
       navigate('/');
     } catch (error) {

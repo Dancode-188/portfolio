@@ -13,7 +13,7 @@ const BlogPage = () => {
 
   const fetchBlogPosts = async () => {
     try {
-      const response = await axios.get("https://danielback.netlify.app/.netlify/functions/blogPost");
+      const response = await axios.get("https://danielback-cc3b9627b533.herokuapp.com/blogPost");
       setBlogPosts(response.data);
     } catch (error) {
       console.error("Error fetching blog posts:", error);
