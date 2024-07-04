@@ -11,6 +11,7 @@
     "@react-three/xr": "^5.7.1",
     "axios": "^1.7.1",
     "cors": "^2.8.5",
+    "dompurify": "^3.1.5",
     "draft-js": "^0.11.7",
     "draft-js-anchor-plugin": "^2.0.3",
     "draft-js-color-picker-plugin": "^1.2.0",
