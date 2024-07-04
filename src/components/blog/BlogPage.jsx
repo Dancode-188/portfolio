@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "./BlogPage.module.scss";
 import axios from "axios";
+import { convertFromRaw } from "draft-js";
+import { stateToHTML } from "draft-js-export-html";
 
 const BlogPage = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -26,19 +28,24 @@ const BlogPage = () => {
         <h1 className={styles.title}>My Blog</h1>
       </header>
       <main className={styles.content}>
-        {blogPosts.map((post) => (
-          <div key={post.id} className={styles.card}>
-            <h3 className={styles.cardTitle}>{post.title}</h3>
-            <p className={styles.cardMeta}>
-              Published on <span className={styles.cardDate}>{post.publishedDate}</span> by{" "}
-              <span className={styles.cardAuthor}>{post.author}</span>
-            </p>
-            <div className={styles.cardContent}>{post.content}</div>
-            <a href={`/blog/${post.id}`} className={styles.cardButton}>
-              Read More
-            </a>
-          </div>
-        ))}
+        {blogPosts.map((post) => {
+          const contentState = convertFromRaw(JSON.parse(post.content));
+          const htmlContent = stateToHTML(contentState);
+
+          return (
+            <div key={post.id} className={styles.card}>
+              <h3 className={styles.cardTitle}>{post.title}</h3>
+              <p className={styles.cardMeta}>
+                Published on <span className={styles.cardDate}>{post.publishedDate}</span> by{" "}
+                <span className={styles.cardAuthor}>{post.author}</span>
+              </p>
+              <div className={styles.cardContent} dangerouslySetInnerHTML={{ __html: htmlContent }} />
+              <a href={`/blog/${post.id}`} className={styles.cardButton}>
+                Read More
+              </a>
+            </div>
+          );
+        })}
       </main>
     </div>
   );
