@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { EditorState, convertToRaw, Modifier, AtomicBlockUtils } from 'draft-js';
+import { EditorState, convertToRaw, Modifier, AtomicBlockUtils, SelectionState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
+import DOMPurify from 'dompurify';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './NewBlogPost.scss';
 
@@ -88,7 +89,7 @@ const NewBlogPost = () => {
     return null;
   }
 
-  const handlePastedText = (text, html, editorState) => {
+  /*const handlePastedText = (text, html, editorState) => {
     if (html) {
       const contentState = Modifier.insertText(
         editorState.getCurrentContent(),
@@ -96,6 +97,47 @@ const NewBlogPost = () => {
         html
       );
       const newEditorState = EditorState.push(editorState, contentState, 'insert-fragment');
+      setContent(newEditorState);
+      return 'handled';
+    }
+    return 'not-handled';
+  };*/
+
+  const handlePastedText = (text, html, editorState) => {
+    if (html) {
+      // Sanitize the HTML
+      const cleanHtml = DOMPurify.sanitize(html);
+      // Convert sanitized HTML to plain text
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(cleanHtml, 'text/html');
+      const plainText = doc.body.textContent || "";
+
+      // Get the current selection
+      const selection = editorState.getSelection();
+      // Create a content state with the text inserted at the current selection
+      const contentState = Modifier.replaceText(
+        editorState.getCurrentContent(),
+        selection,
+        plainText
+      );
+
+      // Create a new editor state with the content state
+      let newEditorState = EditorState.push(editorState, contentState, 'insert-characters');
+
+      // Move the selection to the end of the inserted text
+      const blockMap = contentState.getBlockMap();
+      const key = blockMap.last().getKey();
+      const length = blockMap.last().getLength();
+      const newSelection = new SelectionState({
+        anchorKey: key,
+        anchorOffset: length,
+        focusKey: key,
+        focusOffset: length,
+      });
+
+      // Force the new selection
+      newEditorState = EditorState.forceSelection(newEditorState, newSelection);
+
       setContent(newEditorState);
       return 'handled';
     }
