@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import styles from "./BlogPage.module.scss";
-import axios from "axios";
-import { convertFromRaw } from "draft-js";
-import { stateToHTML } from "draft-js-export-html";
+import React, { useState, useEffect } from 'react';
+import styles from './BlogPage.module.scss';
+import axios from 'axios';
+import { convertFromRaw } from 'draft-js';
+import { stateToHTML } from 'draft-js-export-html';
 
 const BlogPage = () => {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -13,10 +13,10 @@ const BlogPage = () => {
 
   const fetchBlogPosts = async () => {
     try {
-      const response = await axios.get("https://danielback-cc3b9627b533.herokuapp.com/blogPost");
+      const response = await axios.get('https://danielback-cc3b9627b533.herokuapp.com/blogPost');
       setBlogPosts(response.data);
     } catch (error) {
-      console.error("Error fetching blog posts:", error);
+      console.error('Error fetching blog posts:', error);
     }
   };
 
@@ -25,13 +25,13 @@ const BlogPage = () => {
       return JSON.parse(content);
     } catch (error) {
       console.error('Error parsing content:', error);
-      // Return a default state or handle the error as needed
-      return convertFromRaw({
+      // Provide a valid fallback structure for convertFromRaw
+      return {
         entityMap: {},
         blocks: [
           {
             key: 'error',
-            text: 'This post contains invalid content format.',
+            text: 'This post contains invalid content format and cannot be displayed.',
             type: 'unstyled',
             depth: 0,
             inlineStyleRanges: [],
@@ -39,7 +39,7 @@ const BlogPage = () => {
             data: {},
           },
         ],
-      });
+      };
     }
   };
 
@@ -57,7 +57,7 @@ const BlogPage = () => {
             <div key={post.id} className={styles.card}>
               <h3 className={styles.cardTitle}>{post.title}</h3>
               <p className={styles.cardMeta}>
-                Published on <span className={styles.cardDate}>{post.publishedDate}</span> by{" "}
+                Published on <span className={styles.cardDate}>{post.publishedDate}</span> by{' '}
                 <span className={styles.cardAuthor}>{post.author}</span>
               </p>
               <div className={styles.cardContent} dangerouslySetInnerHTML={{ __html: htmlContent }} />
