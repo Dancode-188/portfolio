@@ -1,5 +1,3 @@
-// src/components/blog/BlogPage.jsx
-
 import React, { useState, useEffect } from "react";
 import styles from "./BlogPage.module.scss";
 import axios from "axios";
@@ -22,6 +20,29 @@ const BlogPage = () => {
     }
   };
 
+  const parseContent = (content) => {
+    try {
+      return JSON.parse(content);
+    } catch (error) {
+      console.error('Error parsing content:', error);
+      // Return a default state or handle the error as needed
+      return convertFromRaw({
+        entityMap: {},
+        blocks: [
+          {
+            key: 'error',
+            text: 'This post contains invalid content format.',
+            type: 'unstyled',
+            depth: 0,
+            inlineStyleRanges: [],
+            entityRanges: [],
+            data: {},
+          },
+        ],
+      });
+    }
+  };
+
   return (
     <div className={styles.blogPage}>
       <header className={styles.header}>
@@ -29,7 +50,7 @@ const BlogPage = () => {
       </header>
       <main className={styles.content}>
         {blogPosts.map((post) => {
-          const contentState = convertFromRaw(JSON.parse(post.content));
+          const contentState = convertFromRaw(parseContent(post.content));
           const htmlContent = stateToHTML(contentState);
 
           return (
