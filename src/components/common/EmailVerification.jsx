@@ -17,7 +17,7 @@ const EmailVerification = () => {
   useEffect(() => {
     const verifyEmail = async () => {
       try {
-        const response = await axios.get(`https://danielback-cc3b9627b533.herokuapp.com/subscribe/verify-email?${token}`);
+        const response = await axios.get(`https://danielback-cc3b9627b533.herokuapp.com/subscribe/verify-email${token}`);
         setVerificationStatus(response.data.message);
         setIsSuccess(true);
       } catch (error) {
