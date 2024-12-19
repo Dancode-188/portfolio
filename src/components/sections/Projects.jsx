@@ -20,7 +20,7 @@ const Projects = () => {
       "Achieved <100ms response time for standard requests",
     ],
     links: {
-      github: "#",
+      github: "https://github.com/Dancode-188/intent-system-service",
       live: "#",
     },
   };
