@@ -1,68 +1,30 @@
-import React, { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ReactGA from 'react-ga';
-import Navigation from './components/common/Navigation';
-import Footer from './components/common/Footer';
-import EmailVerification from './components/common/EmailVerification';
-import Login from './components/Login';
-import NewBlogPost from './components/blog/NewBlogPost';
-
-
-// Lazy loading route components
-const HomePage = lazy(() => import('./components/home/HomePage'));
-const RegisterPage = lazy(() => import('./components/register/RegisterPage'));
-const AboutPage = lazy(() => import('./components/about/AboutPage'));
-const ServicePage = lazy(() => import('./components/services/ServicePage'));
-const PortfolioPage = lazy(() => import('./components/portfolio/PortfolioPage'));
-const BlogPage = lazy(() => import('./components/blog/BlogPage'));
-const ContactPage = lazy(() => import('./components/contact/ContactPage'));
-const TestimonialsPage = lazy(() => import('./components/testimonials/TestimonialsPage'));
-const CommunityPage = lazy(() => import('./components/community/CommunityPage'));
-const RegistrationSuccess = lazy(() => import('./components/register/RegistrationSuccess'));
-
-const Loading = () => <div>Loading...</div>;
+import { useState, useEffect } from 'react';
+import MainLayout from './layouts/MainLayout';
+import Hero from './components/sections/Hero';
+import About from './components/sections/About';
+import Projects from './components/sections/Projects';
+import Journey from './components/sections/Journey';
+import Contact from './components/sections/Contact';
+import LoadingScreen from './components/ui/LoadingScreen';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    ReactGA.initialize('G-32ZNB2RDKF');
-    ReactGA.pageview(window.location.pathname + window.location.search);
-
-    const onLocationChange = () => {
-      ReactGA.pageview(window.location.pathname + window.location.search);
-    };
-
-    window.addEventListener('popstate', onLocationChange);
-
-    return () => {
-      window.removeEventListener('popstate', onLocationChange);
-    };
+    setTimeout(() => setIsLoading(false), 1500); // Adjust the time if needed
   }, []);
 
   return (
-    <Router>
-      <div className="App">
-        <Navigation />
-        <Suspense fallback={<Loading />}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/services" element={<ServicePage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/portfolio" element={<PortfolioPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/testimonials" element={<TestimonialsPage />} />
-            <Route path="/community" element={<CommunityPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/registration-success" element={<RegistrationSuccess />} />
-            <Route path="/verify-email/:token" element={<EmailVerification />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/new-blog-post" element={<NewBlogPost />} /> {/* Private Route */}
-          </Routes>
-        </Suspense>
-        <Footer />
-      </div>
-    </Router>
+    <>
+      {isLoading && <LoadingScreen />}
+      <MainLayout>
+        <Hero />
+        <About />
+        <Projects />
+        <Journey />
+        <Contact />
+      </MainLayout>
+    </>
   );
 }
 
