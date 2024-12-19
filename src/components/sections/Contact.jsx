@@ -4,17 +4,17 @@ const Contact = () => {
   const socialLinks = [
     {
       icon: <Github className="w-6 h-6" />,
-      href: "https://github.com/YourGithubUsername",
+      href: "https://github.com/Dancode-188",
       label: "GitHub",
     },
     {
       icon: <Linkedin className="w-6 h-6" />,
-      href: "https://linkedin.com/in/YourLinkedInUsername",
+      href: "https://linkedin.com/in/daniel-bitengo",
       label: "LinkedIn",
     },
     {
       icon: <Mail className="w-6 h-6" />,
-      href: "mailto:your.email@example.com",
+      href: "mailto:danielbitengo@gmail.com",
       label: "Email",
     },
   ];

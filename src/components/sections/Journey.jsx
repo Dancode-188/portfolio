@@ -139,7 +139,7 @@ class IntentService:
           </div>
 
           {/* Code Examples */}
-          <div className="space-y-8">
+          <div className="space-y-8 -mx-6 px-6 md:mx-0 md:px-0">
             <ScrollReveal>
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-text">

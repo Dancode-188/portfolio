@@ -46,10 +46,10 @@ const PerformanceMetrics = () => {
   };
 
   return (
-    <div className="bg-primary/30 rounded-lg p-6 border border-slate/20">
-      <h3 className="text-lg font-semibold text-text mb-6">Performance Metrics</h3>
+    <div className="bg-primary/30 rounded-lg p-4 md:p-6 border border-slate/20">
+      <h3 className="text-lg font-semibold text-text mb-4 md:mb-6">Performance Metrics</h3>
 
-      <div className="grid md:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 md:mb-8">
         {Object.entries(metrics).map(([key, metric]) => (
           <motion.div
             key={key}
@@ -75,9 +75,9 @@ const PerformanceMetrics = () => {
       </div>
 
       {/* Chart */}
-      <div className="h-64">
+      <div className="h-48 md:h-64 -mx-4 md:mx-0">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={metrics[activeMetric].data}>
+          <LineChart data={metrics[activeMetric].data} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
             <XAxis 
               dataKey="name" 
               stroke="#8892B0" 

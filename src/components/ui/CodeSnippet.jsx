@@ -26,9 +26,13 @@ const CodeSnippet = ({ code, language, title }) => {
       </div>
       
       {/* Code */}
-      <pre className="p-4 overflow-x-auto">
-        <code className="text-sm font-mono text-slate">{code}</code>
-      </pre>
+      <div className="relative">
+        <pre className="p-4 overflow-x-auto scrollbar-thin scrollbar-thumb-slate/20 scrollbar-track-transparent">
+          <code className="text-sm md:text-base font-mono text-slate whitespace-pre-wrap break-all md:break-normal">
+            {code}
+          </code>
+        </pre>
+      </div>
     </div>
   );
 };
