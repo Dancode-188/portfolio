@@ -3,7 +3,10 @@ import MainLayout from './layouts/MainLayout';
 import Hero from './components/sections/Hero';
 import About from './components/sections/About';
 import Projects from './components/sections/Projects';
+import Skills from './components/sections/Skills';
 import Journey from './components/sections/Journey';
+import GitHubActivity from './components/sections/GitHubActivity';
+import CTASection from './components/sections/CTASection';
 import Contact from './components/sections/Contact';
 import LoadingScreen from './components/ui/LoadingScreen';
 
@@ -21,7 +24,10 @@ function App() {
         <Hero />
         <About />
         <Projects />
+        <Skills />
         <Journey />
+        <GitHubActivity />
+        <CTASection />
         <Contact />
       </MainLayout>
     </>

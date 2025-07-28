@@ -4,7 +4,7 @@ const Hero = () => {
   const typedTextRef = useRef(null);
 
   useEffect(() => {
-    const text = "I build robust, scalable systems.";
+    const text = "I architect and ship production systems.";
     let letterIndex = 0;
 
     const typeLetter = () => {
@@ -19,7 +19,6 @@ const Hero = () => {
 
     const typeInterval = setInterval(typeLetter, 100);
 
-    // Cleanup interval on unmount
     return () => clearInterval(typeInterval);
   }, []);
 
@@ -36,12 +35,13 @@ const Hero = () => {
             className="text-3xl md:text-6xl font-bold text-slate h-[1.5em]"
           ></h2>
           <p className="max-w-xl text-slate text-lg md:text-xl">
-            I'm a full-stack developer specializing in building privacy-first, 
-            high-performance systems. Currently focused on developing intent-driven 
-            solutions that enhance user experiences while preserving privacy.
+            Self-taught software engineer with 2.5 years of experience building 
+            production-grade platforms from scratch. I've independently architected 
+            and deployed complex systems including an enterprise AI platform and a 
+            microservices architecture that would typically require a team of engineers.
           </p>
 
-          <div className="pt-8">
+          <div className="pt-8 space-x-4">
             <a
               href="#projects"
               onClick={(e) => {
@@ -54,6 +54,15 @@ const Hero = () => {
                          font-mono rounded hover:bg-secondary/10 transition-colors"
             >
               View My Work
+            </a>
+            <a
+              href="https://github.com/Dancode-188"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 border-2 border-slate text-slate 
+                         font-mono rounded hover:bg-slate/10 transition-colors"
+            >
+              GitHub
             </a>
           </div>
         </div>

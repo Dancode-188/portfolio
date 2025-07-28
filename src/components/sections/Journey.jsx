@@ -1,95 +1,80 @@
 import { motion } from 'framer-motion';
-import { Book, GitBranch, Code, Cpu } from 'lucide-react';
+import { Smartphone, Laptop, Code, Rocket, Target, TrendingUp } from 'lucide-react';
 import ScrollReveal from '../ui/ScrollReveal';
-import CodeSnippet from '../ui/CodeSnippet';
 
 const Journey = () => {
   const journeyPoints = [
     {
+      icon: <Smartphone className="w-5 h-5" />,
+      period: "December 2022",
+      title: "The Beginning",
+      description: "Started learning Python on my phone, one week after completing high school. No laptop, just determination and mobile apps. This humble beginning taught me resourcefulness.",
+      highlight: "Started with zero coding knowledge"
+    },
+    {
+      icon: <Laptop className="w-5 h-5" />,
+      period: "February 2023",
+      title: "First Laptop & Acceleration",
+      description: "Bought my first laptop and dove deep into web development. Learned JavaScript, HTML, CSS, and began exploring frameworks. The real journey began here.",
+      highlight: "10+ hours daily learning"
+    },
+    {
       icon: <Code className="w-5 h-5" />,
-      period: "Current Focus",
-      title: "Full Stack Development",
-      description: "Building robust, scalable systems with a focus on privacy and performance. Specializing in React, FastAPI, and modern architecture patterns.",
-      technologies: ["React", "FastAPI", "BERT", "Neo4j"]
+      period: "2023 - 2024",
+      title: "Skill Expansion",
+      description: "Explored multiple languages and frameworks: JavaScript, Python, Ruby, React, Node.js, FastAPI. Focused on building real projects rather than following tutorials.",
+      highlight: "Learned 5+ languages and frameworks"
     },
     {
-      icon: <Cpu className="w-5 h-5" />,
-      period: "System Architecture",
-      title: "Privacy-First Design",
-      description: "Developing expertise in privacy-preserving architectures and real-time processing systems. Implementing sophisticated intent analysis solutions.",
-      technologies: ["Microservices", "Privacy Computing", "Real-time Processing"]
+      icon: <Rocket className="w-5 h-5" />,
+      period: "October 2024",
+      title: "Intent System Project",
+      description: "Designed and built my first major project: a microservices platform with 4 services, BERT integration, and real-time processing. First taste of complex architecture.",
+      highlight: "First production-grade system"
     },
     {
-      icon: <GitBranch className="w-5 h-5" />,
-      period: "Learning Path",
+      icon: <Target className="w-5 h-5" />,
+      period: "December 2024",
+      title: "Asynova Platform",
+      description: "Architected an enterprise AI platform with 40+ APIs, multi-tenant architecture, and comprehensive security. Reduced costs by 90% through strategic infrastructure decisions.",
+      highlight: "Built a Series A-level platform solo"
+    },
+    {
+      icon: <TrendingUp className="w-5 h-5" />,
+      period: "Present",
       title: "Continuous Growth",
-      description: "Constantly exploring new technologies and best practices. Currently deepening knowledge in machine learning and distributed systems.",
-      technologies: ["ML Systems", "Distributed Computing", "System Design"]
-    },
-    {
-      icon: <Book className="w-5 h-5" />,
-      period: "Professional Development",
-      title: "Best Practices & Standards",
-      description: "Committed to writing clean, maintainable code. Focus on testing, documentation, and performance optimization.",
-      technologies: ["Clean Code", "Testing", "Documentation"]
+      description: "Building in public, contributing to open source, and seeking opportunities to join a team where I can contribute while continuing to grow as an engineer.",
+      highlight: "Ready for the next challenge"
     }
   ];
 
-  const codeExamples = {
-    privacy: `# Privacy-First Implementation Example
-from typing import Dict
-import numpy as np
-
-class PrivacyEngine:
-    """Privacy-preserving analytics implementation"""
-    
-    def __init__(self, epsilon: float = 0.1):
-        self.epsilon = epsilon  # Privacy budget
-        
-    def add_noise(self, data: np.ndarray) -> np.ndarray:
-        """Add Laplace noise for differential privacy"""
-        sensitivity = self.calculate_sensitivity(data)
-        noise = np.random.laplace(
-            0, sensitivity/self.epsilon, data.shape
-        )
-        return data + noise`,
-
-    architecture: `# Clean Architecture Example
-from fastapi import FastAPI, Depends
-from typing import List, Optional
-
-class IntentService:
-    """Core service implementing clean architecture"""
-    
-    async def analyze_intent(
-        self,
-        user_action: dict,
-        context: Optional[dict] = None
-    ) -> dict:
-        # Validate and process input
-        validated_data = self.validate_input(user_action)
-        
-        # Apply business logic
-        intent = await self.process_intent(
-            validated_data,
-            context
-        )
-        
-        return self.format_response(intent)`
-  };
+  const achievements = [
+    { metric: "2.5", label: "Years of Experience" },
+    { metric: "2", label: "Production Platforms" },
+    { metric: "1000+", label: "Hours Building" },
+    { metric: "40+", label: "APIs Designed" },
+    { metric: "90%", label: "Cost Reduction" },
+    { metric: "99.17%", label: "MNIST Accuracy" }
+  ];
 
   return (
     <section id="journey" className="py-20 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-4xl font-bold text-text mb-8">
-            Professional Journey
-          </h2>
+          <div className="mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
+              My Journey
+            </h2>
+            <p className="text-slate text-lg max-w-3xl">
+              From learning Python on a phone to architecting distributed systems. 
+              A self-taught journey driven by curiosity and determination.
+            </p>
+          </div>
         </ScrollReveal>
 
+        {/* Timeline */}
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Timeline */}
-          <div className="space-y-12">
+          <div className="space-y-8">
             {journeyPoints.map((point, index) => (
               <ScrollReveal key={index}>
                 <motion.div 
@@ -99,17 +84,18 @@ class IntentService:
                 >
                   {/* Timeline connector */}
                   {index !== journeyPoints.length - 1 && (
-                    <div className="absolute left-[17px] md:left-[27px] top-12 bottom-0 w-px bg-slate/20 -z-10" />
+                    <div className="absolute left-6 top-14 bottom-0 w-px bg-slate/20 -z-10" />
                   )}
                   
                   {/* Icon */}
-                  <div className="w-9 h-9 md:w-14 md:h-14 rounded-full bg-primary border border-slate/20 flex items-center justify-center text-secondary flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-primary border-2 border-secondary/50 
+                                flex items-center justify-center text-secondary flex-shrink-0">
                     {point.icon}
                   </div>
 
                   {/* Content */}
-                  <div className="flex-grow">
-                    <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 mb-4">
+                  <div className="flex-grow pb-8">
+                    <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-3">
                       <span className="text-sm text-secondary font-mono">
                         {point.period}
                       </span>
@@ -118,83 +104,94 @@ class IntentService:
                       </h3>
                     </div>
 
-                    <p className="text-slate mb-4 max-w-2xl">
+                    <p className="text-slate mb-3">
                       {point.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-2">
-                      {point.technologies.map((tech, techIndex) => (
-                        <span 
-                          key={techIndex}
-                          className="px-3 py-1 bg-primary/50 border border-slate/20 rounded-full text-sm text-slate"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                    <p className="text-sm font-semibold text-secondary">
+                      {point.highlight}
+                    </p>
                   </div>
                 </motion.div>
               </ScrollReveal>
             ))}
           </div>
 
-          {/* Code Examples */}
-          <div className="space-y-8 -mx-6 px-6 md:mx-0 md:px-0">
+          {/* Stats and Insights */}
+          <div className="space-y-8">
+            {/* Achievement Grid */}
             <ScrollReveal>
-              <div className="space-y-4">
-                <h3 className="text-xl font-bold text-text">
-                  Code Philosophy
+              <div className="bg-primary/30 rounded-lg p-6 border border-slate/20">
+                <h3 className="text-lg font-semibold text-text mb-6">
+                  Journey Metrics
                 </h3>
-                <p className="text-slate mb-6">
-                  Here are some examples of how I implement clean, 
-                  maintainable code with a focus on privacy and architecture.
-                </p>
-                
-                {/* Code Snippets */}
-                <div className="space-y-6">
-                  <CodeSnippet 
-                    title="Privacy-First Implementation"
-                    code={codeExamples.privacy}
-                    language="python"
-                  />
-                  <CodeSnippet 
-                    title="Clean Architecture"
-                    code={codeExamples.architecture}
-                    language="python"
-                  />
+                <div className="grid grid-cols-2 gap-4">
+                  {achievements.map((achievement, index) => (
+                    <motion.div
+                      key={index}
+                      className="text-center p-4 bg-primary rounded-lg border border-slate/10"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <p className="text-2xl font-bold text-secondary">
+                        {achievement.metric}
+                      </p>
+                      <p className="text-xs text-slate mt-1">
+                        {achievement.label}
+                      </p>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
             </ScrollReveal>
 
-            {/* Skills Progress */}
+            {/* Learning Philosophy */}
             <ScrollReveal>
-              <div className="bg-primary/30 rounded-lg p-6 border border-slate/20">
+              <div className="bg-primary border border-slate/20 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-text mb-4">
-                  Core Competencies
+                  Learning Philosophy
                 </h3>
-                <div className="space-y-4">
-                  {[ 
-                    { skill: "System Architecture", level: 90 },
-                    { skill: "Privacy Implementation", level: 85 },
-                    { skill: "Full Stack Development", level: 88 },
-                    { skill: "Performance Optimization", level: 85 }
-                  ].map((item, index) => (
-                    <div key={index} className="space-y-2">
-                      <div className="flex justify-between text-sm">
-                        <span className="text-slate">{item.skill}</span>
-                        <span className="text-secondary">{item.level}%</span>
-                      </div>
-                      <div className="h-1 bg-slate/20 rounded-full overflow-hidden">
-                        <motion.div
-                          className="h-full bg-secondary"
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${item.level}%` }}
-                          transition={{ duration: 1, ease: "easeOut" }}
-                          viewport={{ once: true }}
-                        />
-                      </div>
-                    </div>
-                  ))}
+                <ul className="space-y-3">
+                  <li className="flex items-start text-slate">
+                    <span className="text-secondary mr-3 mt-1">▹</span>
+                    <span>Build real projects, not todo apps</span>
+                  </li>
+                  <li className="flex items-start text-slate">
+                    <span className="text-secondary mr-3 mt-1">▹</span>
+                    <span>Learn by solving problems, not watching tutorials</span>
+                  </li>
+                  <li className="flex items-start text-slate">
+                    <span className="text-secondary mr-3 mt-1">▹</span>
+                    <span>Focus on understanding, not memorizing</span>
+                  </li>
+                  <li className="flex items-start text-slate">
+                    <span className="text-secondary mr-3 mt-1">▹</span>
+                    <span>Ship early, iterate based on feedback</span>
+                  </li>
+                </ul>
+              </div>
+            </ScrollReveal>
+
+            {/* Current Focus */}
+            <ScrollReveal>
+              <div className="bg-primary/50 border border-secondary/30 rounded-lg p-6">
+                <h3 className="text-lg font-semibold text-text mb-4">
+                  What's Next?
+                </h3>
+                <p className="text-slate mb-4">
+                  I'm looking to join a team where I can contribute my skills while 
+                  learning from experienced engineers. My ideal role involves:
+                </p>
+                <ul className="space-y-2 text-sm">
+                  <li className="text-slate">• Building products that matter</li>
+                  <li className="text-slate">• Solving complex technical challenges</li>
+                  <li className="text-slate">• Working with modern tech stacks</li>
+                  <li className="text-slate">• Contributing to open source</li>
+                </ul>
+                <div className="mt-4 pt-4 border-t border-slate/20">
+                  <p className="text-secondary font-mono text-sm">
+                    Open to: Remote opportunities worldwide
+                  </p>
                 </div>
               </div>
             </ScrollReveal>
