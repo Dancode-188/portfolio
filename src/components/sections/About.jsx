@@ -1,37 +1,36 @@
-import { Code2, Rocket, Brain, Clock } from 'lucide-react';
+import { Code2, Rocket, Brain, Zap } from 'lucide-react';
 import ScrollReveal from '../ui/ScrollReveal';
 
 const About = () => {
   const strengths = [
     {
       icon: <Rocket className="w-5 h-5" />,
-      title: "0 to 1 Builder",
-      description: "Proven ability to take ideas from concept to production. Built two complete platforms independently that would typically require a team."
+      title: "Exceptional Velocity",
+      description: "Shipped 3 production tools in 2.5 months. SyncKit built in 16 days, Graft in 9 days. Proven ability to move from idea to production rapidly."
     },
     {
       icon: <Brain className="w-5 h-5" />,
-      title: "System Architecture",
-      description: "Designed microservices architectures, implemented circuit breakers, built API gateways, and created multi-tenant systems."
+      title: "Distributed Systems",
+      description: "Deep expertise in offline-first architecture, CRDTs, and sync engines. Built production sync infrastructure handling complex distributed scenarios."
     },
     {
       icon: <Code2 className="w-5 h-5" />,
-      title: "Full-Stack Expertise",
-      description: "Expert in TypeScript/JavaScript, advanced in Python. Built everything from React frontends to FastAPI backends."
+      title: "Formal Verification",
+      description: "Use TLA+ to verify distributed systems before implementation. Checked 118,711 states for SyncKit, catching 3 critical bugs in design phase."
     },
     {
-      icon: <Clock className="w-5 h-5" />,
-      title: "Rapid Learning",
-      description: "Self-taught journey from phone tutorials to production systems in 2.5 years. Continuously expanding technical capabilities."
+      icon: <Zap className="w-5 h-5" />,
+      title: "Production Quality",
+      description: "Ship with zero bugs through comprehensive testing (700+ tests), formal verification, and obsessive attention to developer experience."
     }
   ];
 
   const technologies = {
-    "Languages": ["TypeScript/JavaScript (Expert)", "Python (Advanced)", "SQL (Proficient)"],
-    "Backend": ["Node.js", "Express", "FastAPI", "RESTful APIs", "WebSockets"],
-    "Frontend": ["React", "Next.js", "Tailwind CSS", "Responsive Design"],
-    "Databases": ["PostgreSQL", "Redis", "MongoDB", "Neo4j"],
-    "DevOps": ["Docker", "AWS", "Railway", "Vercel", "CI/CD"],
-    "Concepts": ["Microservices", "Circuit Breakers", "JWT/2FA", "Rate Limiting"]
+    "Languages": ["Rust (Production)", "TypeScript (Expert)", "JavaScript (Expert)", "Python"],
+    "Specializations": ["Distributed Systems", "Offline-First Architecture", "TLA+ Verification", "Developer Tools"],
+    "Backend": ["PostgreSQL", "Redis", "WebAssembly", "Node.js", "Docker"],
+    "Frontend": ["React", "Next.js", "Tauri", "Tailwind CSS"],
+    "Tools": ["Git", "libgit2", "Monaco Editor", "CRDTs", "IndexedDB"]
   };
 
   return (
@@ -46,29 +45,32 @@ const About = () => {
           <ScrollReveal>
             <div className="space-y-6 text-slate">
               <p className="text-lg">
-                I'm a self-directed software engineer with <span className="text-secondary font-semibold">2.5 years</span> of 
-                hands-on experience building production-grade systems from scratch.
+                I'm a software engineer who builds production developer tools with{' '}
+                <span className="text-secondary font-semibold">exceptional velocity</span> and{' '}
+                <span className="text-secondary font-semibold">uncompromising quality</span>.
               </p>
               <p>
-                My journey began in December 2022, learning Python on my phone without a laptop. 
-                What started as curiosity quickly became a passion for building sophisticated systems. 
-                By 2024, I had independently architected and deployed two production platforms that 
-                demonstrate senior-level capabilities.
+                In the past 2.5 months, I've shipped three production-ready tools from scratch: 
+                SyncKit (offline-first sync engine), Graft (keyboard-first Git GUI), and RestBolt 
+                (local-first API client). Each project demonstrates senior-level technical depth 
+                combined with rapid execution.
               </p>
               <p>
-                Through projects like <span className="text-secondary">Asynova</span> (40+ APIs, multi-tenant architecture) 
-                and my <span className="text-secondary">Intent Analysis System</span> (4 microservices, real-time processing), 
-                I've proven that dedication and self-direction can achieve what typically requires years 
-                of traditional experience.
+                <span className="text-secondary font-semibold">SyncKit</span> launched to 336 GitHub 
+                stars in 48 hours with zero bug reports—achieved through TLA+ formal verification 
+                (118,711 states checked) and 700+ comprehensive tests. <span className="text-secondary font-semibold">Graft</span>{' '}
+                went viral with 64,455 LinkedIn impressions, validating strong product-market fit. 
+                <span className="text-secondary font-semibold"> RestBolt</span> has an active contributor 
+                who's been adding features and tests since October.
               </p>
               <p>
-                I thrive on complex challenges, from implementing circuit breakers for fault tolerance 
-                to reducing infrastructure costs by 90% through strategic migrations. My approach combines 
-                modern best practices with pragmatic decision-making.
+                My approach: intensive research, production-ready development (not MVPs), formal 
+                verification for distributed systems, and obsessive focus on developer experience. 
+                I build tools that developers actually want to use.
               </p>
               <div className="pt-4">
                 <p className="text-secondary font-mono text-sm">
-                  "While others were learning in classrooms, I was building production systems."
+                  "Shipping velocity doesn't mean cutting corners—it means knowing what matters."
                 </p>
               </div>
             </div>
@@ -77,7 +79,7 @@ const About = () => {
           {/* Right Column - Strengths */}
           <div className="space-y-6">
             <ScrollReveal>
-              <h3 className="text-xl font-semibold text-text mb-4">What I Bring to Your Team</h3>
+              <h3 className="text-xl font-semibold text-text mb-4">What Sets Me Apart</h3>
               <div className="grid gap-4">
                 {strengths.map((strength, index) => (
                   <div 
@@ -99,20 +101,20 @@ const About = () => {
             <ScrollReveal>
               <div className="grid grid-cols-2 gap-4 mt-6">
                 <div className="bg-primary border border-secondary/30 rounded-lg p-4 text-center">
-                  <p className="text-3xl font-bold text-secondary">2</p>
-                  <p className="text-sm text-slate">Production Platforms</p>
+                  <p className="text-3xl font-bold text-secondary">336</p>
+                  <p className="text-sm text-slate">GitHub Stars (48hrs)</p>
                 </div>
                 <div className="bg-primary border border-secondary/30 rounded-lg p-4 text-center">
-                  <p className="text-3xl font-bold text-secondary">40+</p>
-                  <p className="text-sm text-slate">APIs Built</p>
+                  <p className="text-3xl font-bold text-secondary">64K</p>
+                  <p className="text-sm text-slate">LinkedIn Impressions</p>
                 </div>
                 <div className="bg-primary border border-secondary/30 rounded-lg p-4 text-center">
-                  <p className="text-3xl font-bold text-secondary">90%</p>
-                  <p className="text-sm text-slate">Cost Reduction</p>
+                  <p className="text-3xl font-bold text-secondary">700+</p>
+                  <p className="text-sm text-slate">Tests (SyncKit)</p>
                 </div>
                 <div className="bg-primary border border-secondary/30 rounded-lg p-4 text-center">
-                  <p className="text-3xl font-bold text-secondary">2.5</p>
-                  <p className="text-sm text-slate">Years Experience</p>
+                  <p className="text-3xl font-bold text-secondary">0</p>
+                  <p className="text-sm text-slate">Bug Reports</p>
                 </div>
               </div>
             </ScrollReveal>

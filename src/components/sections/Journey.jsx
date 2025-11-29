@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Smartphone, Laptop, Code, Rocket, Target, TrendingUp } from 'lucide-react';
+import { Smartphone, Laptop, Code, Rocket, Target, TrendingUp, Star, Zap } from 'lucide-react';
 import ScrollReveal from '../ui/ScrollReveal';
 
 const Journey = () => {
@@ -27,34 +27,41 @@ const Journey = () => {
     },
     {
       icon: <Rocket className="w-5 h-5" />,
-      period: "October 2024",
-      title: "Intent System Project",
-      description: "Designed and built my first major project: a microservices platform with 4 services, BERT integration, and real-time processing. First taste of complex architecture.",
-      highlight: "First production-grade system"
+      period: "September 2025",
+      title: "RestBolt - First Open Source Tool",
+      description: "Built fast, local-first API testing tool to solve Postman/Insomnia pain points. First step into open source development and building for other developers.",
+      highlight: "First developer tool launched"
     },
     {
       icon: <Target className="w-5 h-5" />,
-      period: "December 2024",
-      title: "Asynova Platform",
-      description: "Architected an enterprise AI platform with 40+ APIs, multi-tenant architecture, and comprehensive security. Reduced costs by 90% through strategic infrastructure decisions.",
-      highlight: "Built a Series A-level platform solo"
+      period: "October 2025",
+      title: "Graft - Viral Success",
+      description: "Built keyboard-first Git GUI in 9 days. LinkedIn launch post went viral with 64,455 impressions and 1,066 reactions. Proved I could build AND market developer tools.",
+      highlight: "64K impressions, validated PMF"
+    },
+    {
+      icon: <Star className="w-5 h-5" />,
+      period: "November 2025",
+      title: "SyncKit - Breakthrough Launch",
+      description: "Shipped offline-first sync engine after 16 days of development with TLA+ verification. Hit 336 GitHub stars in 48 hours with zero bug reports. Demonstrated senior-level technical depth.",
+      highlight: "336 stars in 48 hours, zero bugs"
     },
     {
       icon: <TrendingUp className="w-5 h-5" />,
       period: "Present",
-      title: "Continuous Growth",
-      description: "Building in public, contributing to open source, and seeking opportunities to join a team where I can contribute while continuing to grow as an engineer.",
-      highlight: "Ready for the next challenge"
+      title: "Ready for the Next Chapter",
+      description: "Three production tools shipped, proven velocity and quality, growing open source presence. Seeking remote opportunities with developer tools companies where I can contribute and grow.",
+      highlight: "Seeking remote roles globally"
     }
   ];
 
   const achievements = [
-    { metric: "2.5", label: "Years of Experience" },
-    { metric: "2", label: "Production Platforms" },
-    { metric: "1000+", label: "Hours Building" },
-    { metric: "40+", label: "APIs Designed" },
-    { metric: "90%", label: "Cost Reduction" },
-    { metric: "99.17%", label: "MNIST Accuracy" }
+    { metric: "3", label: "Production Tools" },
+    { metric: "2.5", label: "Months to Ship" },
+    { metric: "336", label: "GitHub Stars" },
+    { metric: "64K", label: "LinkedIn Views" },
+    { metric: "700+", label: "Tests Written" },
+    { metric: "0", label: "Bug Reports" }
   ];
 
   return (
@@ -66,8 +73,8 @@ const Journey = () => {
               My Journey
             </h2>
             <p className="text-slate text-lg max-w-3xl">
-              From learning Python on a phone to architecting distributed systems. 
-              A self-taught journey driven by curiosity and determination.
+              From learning Python on a phone to shipping production developer tools with 
+              336 GitHub stars. A self-taught journey driven by curiosity, velocity, and quality.
             </p>
           </div>
         </ScrollReveal>
@@ -123,7 +130,7 @@ const Journey = () => {
             <ScrollReveal>
               <div className="bg-primary/30 rounded-lg p-6 border border-slate/20">
                 <h3 className="text-lg font-semibold text-text mb-6">
-                  Journey Metrics
+                  2025 Metrics
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
                   {achievements.map((achievement, index) => (
@@ -145,52 +152,57 @@ const Journey = () => {
               </div>
             </ScrollReveal>
 
-            {/* Learning Philosophy */}
+            {/* Building Philosophy */}
             <ScrollReveal>
               <div className="bg-primary border border-slate/20 rounded-lg p-6">
                 <h3 className="text-lg font-semibold text-text mb-4">
-                  Learning Philosophy
+                  Building Philosophy
                 </h3>
                 <ul className="space-y-3">
                   <li className="flex items-start text-slate">
                     <span className="text-secondary mr-3 mt-1">▹</span>
-                    <span>Build real projects, not todo apps</span>
+                    <span>Ship production-ready from day one, not MVPs</span>
                   </li>
                   <li className="flex items-start text-slate">
                     <span className="text-secondary mr-3 mt-1">▹</span>
-                    <span>Learn by solving problems, not watching tutorials</span>
+                    <span>Use formal verification (TLA+) for distributed systems</span>
                   </li>
                   <li className="flex items-start text-slate">
                     <span className="text-secondary mr-3 mt-1">▹</span>
-                    <span>Focus on understanding, not memorizing</span>
+                    <span>Comprehensive testing including chaos scenarios</span>
                   </li>
                   <li className="flex items-start text-slate">
                     <span className="text-secondary mr-3 mt-1">▹</span>
-                    <span>Ship early, iterate based on feedback</span>
+                    <span>Obsess over developer experience and polish</span>
+                  </li>
+                  <li className="flex items-start text-slate">
+                    <span className="text-secondary mr-3 mt-1">▹</span>
+                    <span>Velocity without compromising quality</span>
                   </li>
                 </ul>
               </div>
             </ScrollReveal>
 
-            {/* Current Focus */}
+            {/* What's Next */}
             <ScrollReveal>
               <div className="bg-primary/50 border border-secondary/30 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-text mb-4">
-                  What's Next?
+                <h3 className="text-lg font-semibold text-text mb-4 flex items-center">
+                  <Zap className="w-5 h-5 mr-2 text-secondary" />
+                  What I'm Looking For
                 </h3>
                 <p className="text-slate mb-4">
-                  I'm looking to join a team where I can contribute my skills while 
-                  learning from experienced engineers. My ideal role involves:
+                  Remote software engineering roles where I can apply my shipping velocity 
+                  and systems thinking to real problems. Ideal opportunities:
                 </p>
                 <ul className="space-y-2 text-sm">
-                  <li className="text-slate">• Building products that matter</li>
-                  <li className="text-slate">• Solving complex technical challenges</li>
-                  <li className="text-slate">• Working with modern tech stacks</li>
-                  <li className="text-slate">• Contributing to open source</li>
+                  <li className="text-slate">• Developer tools companies (Vercel, Railway, Neon, etc.)</li>
+                  <li className="text-slate">• Infrastructure teams building platforms</li>
+                  <li className="text-slate">• Early-stage startups solving hard technical problems</li>
+                  <li className="text-slate">• Teams that value shipping velocity + quality</li>
                 </ul>
                 <div className="mt-4 pt-4 border-t border-slate/20">
                   <p className="text-secondary font-mono text-sm">
-                    Open to: Remote opportunities worldwide
+                    Location: Nairobi, Kenya | Open to: Global remote or relocation (UK/EU visa sponsorship)
                   </p>
                 </div>
               </div>

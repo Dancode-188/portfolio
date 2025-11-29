@@ -25,47 +25,51 @@ const Contact = () => {
       <div className="max-w-6xl mx-auto px-6">
         <ScrollReveal>
           <h2 className="text-3xl md:text-4xl font-bold text-text text-center mb-4">
-            Let's Build Something Together
+            Let's Build Something Great Together
           </h2>
 
           <p className="text-slate text-center max-w-2xl mx-auto mb-8 text-lg">
-            I'm actively looking for <span className="text-secondary font-semibold">remote full-stack or backend engineering roles</span> where 
-            I can contribute to meaningful products while continuing to grow as an engineer.
+            Seeking <span className="text-secondary font-semibold">remote software engineering roles</span> where 
+            I can combine high-velocity shipping with strong systems thinking. Particularly interested in{' '}
+            <span className="text-secondary font-semibold">developer tools, infrastructure, and early-stage startups</span>.
           </p>
 
           {/* Current Status */}
           <div className="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
             <div className="flex items-center text-secondary">
               <Briefcase className="w-5 h-5 mr-2" />
-              <span className="font-mono text-sm">Available for hire</span>
+              <span className="font-mono text-sm">Open to opportunities</span>
             </div>
             <div className="flex items-center text-slate">
               <MapPin className="w-5 h-5 mr-2" />
-              <span className="font-mono text-sm">Remote worldwide</span>
+              <span className="font-mono text-sm">Nairobi, Kenya | Remote globally or UK/EU relocation</span>
             </div>
           </div>
 
           {/* CTA Box */}
           <div className="max-w-2xl mx-auto mb-12 p-6 bg-primary border border-secondary/30 rounded-lg">
             <h3 className="text-xl font-semibold text-text mb-3 text-center">
-              Looking for a dedicated engineer?
+              What I Bring to Your Team
             </h3>
             <p className="text-slate text-center mb-4">
-              I bring senior-level skills at mid-level investment. With experience building 
-              production systems from scratch, I can hit the ground running on your team.
+              Proven ability to ship production-ready developer tools with exceptional velocity. 
+              Built 3 tools in 2.5 months with 336 GitHub stars, 64K LinkedIn impressions, and zero bug reports.
             </p>
             <div className="flex flex-wrap justify-center gap-3 text-sm">
               <span className="px-3 py-1 bg-primary rounded-full text-secondary border border-secondary/30">
-                Full-Stack Development
+                Distributed Systems
               </span>
               <span className="px-3 py-1 bg-primary rounded-full text-secondary border border-secondary/30">
-                System Architecture
+                Offline-First Architecture
               </span>
               <span className="px-3 py-1 bg-primary rounded-full text-secondary border border-secondary/30">
-                API Design
+                Developer Tools
               </span>
               <span className="px-3 py-1 bg-primary rounded-full text-secondary border border-secondary/30">
-                Remote Work
+                TLA+ Verification
+              </span>
+              <span className="px-3 py-1 bg-primary rounded-full text-secondary border border-secondary/30">
+                Rust & TypeScript
               </span>
             </div>
           </div>
@@ -94,7 +98,7 @@ const Contact = () => {
               className="inline-block px-8 py-3 bg-secondary text-primary font-mono 
                        rounded hover:bg-secondary/90 transition-colors"
             >
-              Send Me an Email
+              Get In Touch
             </a>
           </div>
         </ScrollReveal>

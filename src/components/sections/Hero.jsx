@@ -4,7 +4,7 @@ const Hero = () => {
   const typedTextRef = useRef(null);
 
   useEffect(() => {
-    const text = "I architect and ship production systems.";
+    const text = "I build developer tools that ship fast and scale.";
     let letterIndex = 0;
 
     const typeLetter = () => {
@@ -35,10 +35,11 @@ const Hero = () => {
             className="text-3xl md:text-6xl font-bold text-slate h-[1.5em]"
           ></h2>
           <p className="max-w-xl text-slate text-lg md:text-xl">
-            Self-taught software engineer with 2.5 years of experience building 
-            production-grade platforms from scratch. I've independently architected 
-            and deployed complex systems including an enterprise AI platform and a 
-            microservices architecture that would typically require a team of engineers.
+            Software engineer who ships production developer tools at exceptional velocity. 
+            Built three tools in 2.5 months—SyncKit (offline-first sync engine) reached 336 
+            GitHub stars in 48 hours, Graft (Git GUI) achieved 64K LinkedIn impressions, and 
+            RestBolt (API client) is actively maintained with growing community. Specializes 
+            in distributed systems, offline-first architecture, and formal verification (TLA+).
           </p>
 
           <div className="pt-8 space-x-4">
@@ -53,7 +54,7 @@ const Hero = () => {
               className="inline-block px-6 py-3 border-2 border-secondary text-secondary 
                          font-mono rounded hover:bg-secondary/10 transition-colors"
             >
-              View My Work
+              View My Projects
             </a>
             <a
               href="https://github.com/Dancode-188"

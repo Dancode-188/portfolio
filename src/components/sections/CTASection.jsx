@@ -1,23 +1,23 @@
 import ScrollReveal from '../ui/ScrollReveal';
 import CallToAction from '../ui/CallToAction';
-import { Code, Users, Zap } from 'lucide-react';
+import { Rocket, Target, Zap } from 'lucide-react';
 
 const CTASection = () => {
   const reasons = [
     {
-      icon: <Code className="w-6 h-6" />,
-      title: "Proven Track Record",
-      description: "Built 2 production-grade platforms independently"
+      icon: <Rocket className="w-6 h-6" />,
+      title: "Exceptional Velocity",
+      description: "Shipped 3 production tools in 2.5 months with 336 GitHub stars and zero bugs"
+    },
+    {
+      icon: <Target className="w-6 h-6" />,
+      title: "Senior-Level Quality",
+      description: "TLA+ verification, 700+ tests, formal methods for distributed systems"
     },
     {
       icon: <Zap className="w-6 h-6" />,
-      title: "Fast & Self-Directed",
-      description: "From zero to architect-level in 2.5 years"
-    },
-    {
-      icon: <Users className="w-6 h-6" />,
-      title: "Team Ready",
-      description: "Looking to contribute and grow with your team"
+      title: "Proven Impact",
+      description: "64K LinkedIn impressions, active contributors, real market validation"
     }
   ];
 
@@ -27,11 +27,10 @@ const CTASection = () => {
         <ScrollReveal>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
-              Why Hire Me?
+              Why Work With Me?
             </h2>
             <p className="text-slate text-lg max-w-2xl mx-auto">
-              I bring senior-level technical skills with the hunger and dedication 
-              of someone early in their career. Here's what makes me different:
+              I combine high-velocity shipping with uncompromising quality. Here's what sets me apart:
             </p>
           </div>
         </ScrollReveal>
@@ -60,9 +59,9 @@ const CTASection = () => {
 
         <ScrollReveal>
           <CallToAction
-            title="Ready to Join Your Team"
-            description="I'm looking for a remote position where I can contribute immediately while continuing to grow. 
-                       If you need someone who can own problems end-to-end and ship quality code, let's talk."
+            title="Let's Build Something Great"
+            description="Seeking remote opportunities with developer tools companies, infrastructure teams, or early-stage 
+                       startups. If you value shipping velocity + technical depth, let's talk."
             buttonText="Get In Touch"
             buttonHref="#contact"
           />
